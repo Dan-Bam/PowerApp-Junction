@@ -255,3 +255,35 @@
         Y: =RectQuickActionBar1.Height
         ZIndex: =16
 
+    MeetingDateSelect1_1 As datepicker:
+        AccessibleLabel: =Self.Tooltip
+        Height: =35
+        OnChange: =Select(Self)
+        OnSelect: |-
+            =Concurrent(
+            Reset(TextSearchBox1),
+            Set(_showMeetingTimes, false),
+            UpdateContext({_loadingMeetingTimes: true}),
+            Set(_selectedMeetingTime, Blank()),
+            Set(_selectedRoom, Blank()),
+            Set(_roomListSelected, false),
+            /*
+            Uses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,
+            a meeting duration (in minutes), an acceptable start and end range to find the meeting.
+            Attendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.
+            */
+            ClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(
+            	{RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,
+            	Start:Text(DateAdd(MeetingDateSelect1_1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1_1.SelectedDate, 17, Hours), UTC),
+            	MaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: "Work"}).MeetingTimeSuggestions,
+            "StartTime", MeetingTimeSlot.Start.DateTime, "EndTime", MeetingTimeSlot.End.DateTime))
+            );
+            UpdateContext({_loadingMeetingTimes: false});
+            Set(_showMeetingTimes, true)
+        Tooltip: ="모임 날짜를 선택하세요. 제출에 필요합니다."
+        Visible: =_showDetails
+        Width: =177
+        X: =742
+        Y: =171
+        ZIndex: =17
+
