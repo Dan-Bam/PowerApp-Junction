@@ -200,7 +200,7 @@
         Title2 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 0, 0, 0)
-            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10, RGBA(200, 200, 200, 0.3), And(DateDiff(_startDay, _firstDayOfMonth) + Self.Text > 0, DateDiff(_endDay, _firstDayOfMonth) + Self.Text < 2), RGBA(200, 200, 200, 1), RGBA(0, 0, 0, 0))
             FocusedBorderColor: =Self.Color
             FocusedBorderThickness: =2
             Height: =MonthDayGallery1.TemplateHeight
@@ -274,7 +274,7 @@
         IconBackground: =RGBA(255, 255, 255, 0)
         IconFill: =RGBA(255, 255, 255, 0)
         OnChange: =Select(Self)
-        OnSelect: =
+        OnSelect: =Set(_endDay, MeetingDateSelect1_2.SelectedDate)
         PaddingRight: =0
         Tooltip: ="모임 날짜를 선택하세요. 제출에 필요합니다."
         Width: =152
