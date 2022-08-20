@@ -60,16 +60,14 @@
         OnSelect: |-
             =/*retrieves calendar events for all days in current month view and selected calendar 
             _minDate and _maxDate act as markers to prevent duplicate data collection*/         
-            If(IsBlank(_userDomain),         
-            	UpdateContext({_showLoading: true});         
+            If(IsBlank(_userDomain),                  
             	Set(_userDomain, Right(User().Email, Len(User().Email) - Find("@", User().Email)));         
             	Set(_dateSelected, Today());         
             	Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), Days));         
             	Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
             	Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days))         
             );         
-            Set(_calendarVisible, false);         
-            UpdateContext({_showLoading: true});         
+            Set(_calendarVisible, false);        
             Set(_myCalendar, Self.Selected);         
             Set(_minDate, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
             Set(_maxDate, DateAdd(DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days), 40, Days));         
@@ -87,7 +85,6 @@
         Height: =50
         Size: =18
         Text: =Text(_firstDayOfMonth, "mmmm yyyy")
-        Visible: =_calendarVisible
         Width: =419
         Wrap: =false
         Y: =dropdownCalendarSelection1_1.Y + dropdownCalendarSelection1_1.Height + 40
@@ -109,7 +106,6 @@
         PaddingTop: =7
         TabIndex: =0
         Tooltip: ="이전 달 보기"
-        Visible: =_calendarVisible
         Width: =59
         Y: =LblMonthSelected1_1.Y
         ZIndex: =8
@@ -130,7 +126,6 @@
         PaddingTop: =7
         TabIndex: =0
         Tooltip: ="다음 달 보기"
-        Visible: =_calendarVisible
         Width: =59
         X: =419 - Self.Width
         Y: =LblMonthSelected1_1.Y
@@ -143,7 +138,6 @@
         ShowScrollbar: =false
         TemplatePadding: =0
         TemplateSize: =60
-        Visible: =_calendarVisible
         Width: =420
         Y: =LblMonthSelected1_1.Y + LblMonthSelected1_1.Height + 10
         ZIndex: =10
@@ -169,7 +163,6 @@
         ShowScrollbar: =false
         TemplatePadding: =0
         TemplateSize: =60
-        Visible: =_calendarVisible
         Width: =420
         WrapCount: =7
         Y: =WeekdayGallery1_1.Y + WeekdayGallery1_1.Height
@@ -305,14 +298,6 @@
         X: =471
         Y: =411
         ZIndex: =23
-
-    Import1 As import:
-        Size: =13
-        Text: ="데이터 가져오기"
-        Width: =149
-        X: =472
-        Y: =655
-        ZIndex: =24
 
     Rectangle3_1 As rectangle:
         BorderColor: =RGBA(215, 223, 240, 1)
