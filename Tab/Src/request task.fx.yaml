@@ -223,3 +223,67 @@
         Y: =173
         ZIndex: =15
 
+    Button2 As button:
+        OnSelect: =Navigate('my task')
+        Text: ="REQUEST"
+        X: =1174
+        Y: =658
+        ZIndex: =16
+
+    Button2_1 As button:
+        BorderColor: =ColorFade(Self.Color, -15%)
+        Color: =RGBA(255, 0, 0, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        OnSelect: =Navigate('my task')
+        Text: ="CANCLE"
+        X: =972
+        Y: =658
+        ZIndex: =17
+
+    Label1 As label:
+        Text: ="DeadLine"
+        X: =471
+        Y: =119
+        ZIndex: =18
+
+    Label1_1 As label:
+        Text: ="Employee to assign"
+        Width: =200
+        X: =471
+        Y: =233
+        ZIndex: =19
+
+    TextInput1 As text:
+        Default: =""
+        HintText: ="ex)example@gmail.com"
+        X: =472
+        Y: =287
+        ZIndex: =20
+
+    Label1_2 As label:
+        Text: |-
+            ="Task
+            "
+        Width: =200
+        X: =472
+        Y: =362
+        ZIndex: =21
+
+    TextInput2 As text:
+        Default: =""
+        Height: =56
+        HintText: ="Title"
+        Width: =730
+        X: =471
+        Y: =402
+        ZIndex: =22
+
+    TextInput2_1 As text:
+        Default: =""
+        Height: =122
+        HintText: ="Message"
+        Width: =730
+        X: =471
+        Y: =493
+        ZIndex: =23
+
