@@ -30,6 +30,7 @@
     "iconPrevMonth1_1": 55,
     "iconRemove1": 76,
     "Image1": 6,
+    "Import1": 87,
     "Label1": 42,
     "Label1_1": 44,
     "Label1_2": 48,
@@ -90,7 +91,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "08/20/2022 11:10:47",
+  "HeaderLastSavedDateTimeUTC": "08/20/2022 11:17:30",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "1b0554db-ad3c-4994-9da3-24b47e15ef45": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/1166f95ba8de4e4aa4939009cfa9597d\"",
@@ -121,14 +122,15 @@
   "OrderXMLTemplate": {
     "button": 3,
     "circle": 7,
-    "datepicker": 9,
+    "datepicker": 10,
     "dropdown": 4,
     "gallery": 6,
     "icon": 5,
     "image": 2,
+    "import": 8,
     "label": 1,
     "rectangle": 0,
-    "text": 8
+    "text": 9
   },
   "PublishOrderIndices": {
     "AddIcon1": 70,
@@ -159,6 +161,7 @@
     "iconPrevMonth1_1": 54,
     "iconRemove1": 80,
     "Image1": 5,
+    "Import1": 0,
     "Label1": 41,
     "Label1_1": 43,
     "Label1_2": 47,
