@@ -227,7 +227,7 @@
     Button2 As button:
         OnSelect: =Navigate('my task')
         Text: ="REQUEST"
-        X: =1174
+        X: =1161
         Y: =709
         ZIndex: =16
 
@@ -321,11 +321,11 @@
         Y: =71
         ZIndex: =26
 
-    Icon1 As icon.HorizontalLine:
-        Height: =52
-        Icon: =Icon.HorizontalLine
-        Width: =20
+    Label7 As label:
+        Size: =17
+        Text: ="~"
+        Width: =23
         X: =826
-        Y: =159
+        Y: =165
         ZIndex: =27
 
