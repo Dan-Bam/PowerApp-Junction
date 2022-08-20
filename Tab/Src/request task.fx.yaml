@@ -22,6 +22,7 @@
         Width: =Parent.Width - Self.X * 2
         Wrap: =false
         X: =32
+        Y: =141
         ZIndex: =3
 
     LblResetToday1_1 As label:
