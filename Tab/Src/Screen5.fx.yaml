@@ -375,3 +375,12 @@
         Y: =18
         ZIndex: =18
 
+    Rectangle5 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(215, 223, 240, 1)
+        Height: =80
+        Width: =944
+        X: =422
+        Y: =76
+        ZIndex: =19
+
