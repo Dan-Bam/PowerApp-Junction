@@ -1661,7 +1661,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTabletIconEmptyState.ID%",
       "Name": "iconEmptyState1",
-      "ParentIndex": 17,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6433,7 +6433,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%WeekdayGallery.ID%",
       "Name": "WeekdayGallery2",
-      "ParentIndex": 16,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
