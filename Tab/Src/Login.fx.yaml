@@ -37,7 +37,7 @@ Login As screen:
         ZIndex: =5
 
     RectQuickActionBar1_1 As rectangle:
-        Height: =97
+        Height: =107
         Width: =Parent.Width
         ZIndex: =6
 
