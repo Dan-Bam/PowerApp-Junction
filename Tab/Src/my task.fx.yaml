@@ -7,6 +7,7 @@
         Fill: =RGBA(215, 223, 240, 1)
         FontWeight: =FontWeight.Normal
         Height: =115
+        OnSelect: =Navigate('request task')
         PressedBorderColor: =RGBA(136, 160, 209, 1)
         PressedColor: |
             =RGBA(237,241,255,1)

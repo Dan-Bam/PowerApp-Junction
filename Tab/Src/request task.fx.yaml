@@ -282,8 +282,15 @@
         Default: =""
         Height: =122
         HintText: ="Message"
+        Mode: =TextMode.MultiLine
         Width: =730
         X: =471
         Y: =493
         ZIndex: =23
+
+    Import1 As import:
+        Text: ="데이터 가져오기"
+        X: =491
+        Y: =658
+        ZIndex: =24
 
