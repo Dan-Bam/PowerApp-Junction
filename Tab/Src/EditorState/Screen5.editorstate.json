@@ -1,6 +1,6 @@
 {
   "ControlStates": {
-    "main task": {
+    "Screen5": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -20,7 +20,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "main task",
+      "Name": "Screen5",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
@@ -69,5 +69,5 @@
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "main task"
+  "TopParentName": "Screen5"
 }
