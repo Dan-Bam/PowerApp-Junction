@@ -388,7 +388,7 @@
     Rectangle6 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(253, 223, 223, 1)
-        OnSelect: =Set(Name, "red")
+        OnSelect: =Set(first, "red")
         X: =460
         Y: =175
         ZIndex: =21
@@ -396,7 +396,7 @@
     Rectangle6_1 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(254, 255, 197, 1)
-        OnSelect: =Set(Name, "yellow")
+        OnSelect: =Set(second, "yellow")
         X: =460
         Y: =285
         ZIndex: =22
@@ -404,7 +404,7 @@
     Rectangle6_2 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(201, 255, 197, 1)
-        OnSelect: =Set(Name, "green")
+        OnSelect: =Set(third, "green")
         X: =460
         Y: =393
         ZIndex: =23
@@ -412,7 +412,7 @@
     Rectangle6_3 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(175, 236, 255, 1)
-        OnSelect: =Set(Name, "blue")
+        OnSelect: =Set(forth, "blue")
         X: =460
         Y: =508
         ZIndex: =24
