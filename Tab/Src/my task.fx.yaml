@@ -22,7 +22,7 @@
         ZIndex: =1
 
     RectQuickActionBar1_3 As rectangle:
-        Height: =69
+        Height: =90
         Width: =Parent.Width
         ZIndex: =2
 
@@ -33,7 +33,7 @@
         Text: ="My Tiny Asistance"
         Width: =350
         X: =21
-        Y: =6
+        Y: =14
         ZIndex: =3
 
     Button5 As button:
@@ -42,6 +42,21 @@
             ="My Task
             "
         X: =1186
-        Y: =14
+        Y: =23
         ZIndex: =4
+
+    Rectangle3 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =72
+        OnSelect: =RGBA(237,241,255,1)
+        Width: =1366
+        Y: =90
+        ZIndex: =5
+
+    Label4 As label:
+        Text: ="   Assigned Task"
+        X: =21
+        Y: =106
+        ZIndex: =6
 
