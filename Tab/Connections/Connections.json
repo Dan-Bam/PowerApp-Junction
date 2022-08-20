@@ -49,5 +49,30 @@
     "dependencies": {},
     "dependents": [],
     "id": "c4181457-d2ca-452d-bc4b-b9e417a389c2"
+  },
+  "f4cc9cb4-de62-42c8-a016-f95bb589799d": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1591/1.0.1591.2961/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {
+      "https://1bm4rj.sharepoint.com/sites/danbam-file": {
+        "dataSources": {
+          "Documents": {
+            "tableName": "36c3daee-ed21-4b05-9b28-3810beec5800"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Documents"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "f4cc9cb4-de62-42c8-a016-f95bb589799d"
   }
 }
