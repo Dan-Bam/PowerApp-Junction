@@ -387,6 +387,7 @@
 
     Rectangle6 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: =DisplayMode.View
         Fill: =RGBA(253, 223, 223, 1)
         OnSelect: =Set(first, "red")
         X: =1142
