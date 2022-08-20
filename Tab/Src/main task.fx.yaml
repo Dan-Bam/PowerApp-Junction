@@ -1,4 +1,4 @@
-"Screen5 As screen.'tabletLayout_Calendar_ver3.0'":
+"'main task' As screen.'tabletLayout_Calendar_ver3.0'":
 
     RectMeetingBkg2 As rectangle:
         Height: =42
@@ -333,26 +333,6 @@
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
             ZIndex: =7
-
-    iconEmptyState1 As icon.CalendarBlank:
-        DisplayMode: =DisplayMode.View
-        Icon: =Icon.CalendarBlank
-        Visible: =IsBlank(_userDomain)
-        X: =2* Parent.Width/3 - Self.Width / 2
-        Y: =LblNoEvents2.Y - Self.Height
-        ZIndex: =14
-
-    LblNoEvents2 As label:
-        Align: =Align.Center
-        DisplayMode: =DisplayMode.View
-        Height: =220
-        Size: =15
-        Text: =If(IsBlank(_userDomain), "시작하려면 드롭다운에서 일정 선택", _showLoading, "이벤트를 로드하는 중...", "예약된 이벤트 없음")
-        Visible: =IsBlank(_userDomain) || _showLoading || And(CountRows(CalendarEventsGallery1.AllItems) = 0 && _calendarVisible)
-        Width: =600
-        X: =2* Parent.Width/3 - Self.Width / 2
-        Y: =CalendarEventsGallery1.Y + CalendarEventsGallery1.Height/2 - Self.Height/2
-        ZIndex: =15
 
     RectCalendarSeparator2 As rectangle:
         Height: =Parent.Height - Self.Y
