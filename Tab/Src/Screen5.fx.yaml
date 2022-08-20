@@ -364,16 +364,9 @@
     Button2 As button:
         BorderColor: =RGBA(255,255,255,1)
         Text: ="My Task"
-        X: =983
+        X: =1174
         Y: =18
         ZIndex: =17
-
-    Button2_1 As button:
-        BorderColor: =RGBA(255,255,255,1)
-        Text: ="My Task"
-        X: =1185
-        Y: =18
-        ZIndex: =18
 
     Rectangle5 As rectangle:
         BorderColor: =RGBA(215, 223, 240, 1)
