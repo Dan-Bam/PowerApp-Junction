@@ -1827,7 +1827,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTabletLblNoEvents.ID%",
       "Name": "LblNoEvents1",
-      "ParentIndex": 14,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2645,7 +2645,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "MeetingDateSelect1_2",
-      "ParentIndex": 12,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2954,7 +2954,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%MonthDayGallery.ID%",
       "Name": "MonthDayGallery1",
-      "ParentIndex": 13,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
