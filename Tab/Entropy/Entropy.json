@@ -63,6 +63,7 @@
     "Rectangle2": 88,
     "Rectangle3": 34,
     "Rectangle3_1": 47,
+    "Rectangle3_2": 97,
     "Rectangle6_4": 38,
     "Rectangle6_5": 39,
     "Rectangle6_6": 40,
@@ -99,7 +100,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "08/20/2022 20:30:29",
+  "HeaderLastSavedDateTimeUTC": "08/20/2022 20:33:20",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "1b0554db-ad3c-4994-9da3-24b47e15ef45": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/1166f95ba8de4e4aa4939009cfa9597d\"",
@@ -203,6 +204,7 @@
     "Rectangle2": 91,
     "Rectangle3": 33,
     "Rectangle3_1": 46,
+    "Rectangle3_2": 46,
     "Rectangle6_4": 37,
     "Rectangle6_5": 38,
     "Rectangle6_6": 39,
@@ -255,9 +257,9 @@
       "icon": 10,
       "image": 1,
       "label": 27,
-      "rectangle": 18,
+      "rectangle": 19,
       "screen": 6,
-      "text": 6
+      "text": 7
     },
     "DeserializationLoadTime": 5.0889789,
     "ErrorCount": 0
