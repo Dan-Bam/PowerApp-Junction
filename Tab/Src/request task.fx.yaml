@@ -343,11 +343,19 @@
         ZIndex: =29
 
     Button7 As button:
-        Height: =29
-        Size: =12
+        Height: =22
+        Size: =10
         Text: ="Search File"
-        Width: =151
+        Width: =101
         X: =1154
-        Y: =211
+        Y: =214
         ZIndex: =30
+
+    Label8 As label:
+        BorderThickness: =1
+        Text: =""
+        Width: =294
+        X: =961
+        Y: =165
+        ZIndex: =31
 
