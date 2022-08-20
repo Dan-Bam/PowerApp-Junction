@@ -48,7 +48,7 @@
 
     Rectangle3 As rectangle:
         BorderColor: =RGBA(215, 223, 240, 1)
-        Fill: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(237, 241, 255, 1)
         Height: =72
         OnSelect: =RGBA(237,241,255,1)
         Width: =1366
