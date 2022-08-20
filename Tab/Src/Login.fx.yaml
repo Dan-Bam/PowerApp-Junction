@@ -1,12 +1,12 @@
 Login As screen:
 
     Image1 As image:
-        Height: =285
+        Height: =385
         Image: ='image 1'
         ImagePosition: =ImagePosition.Fill
-        Width: =761
-        X: =296
-        Y: =160
+        Width: =1015
+        X: =175
+        Y: =134
         ZIndex: =3
 
     Button4 As button:

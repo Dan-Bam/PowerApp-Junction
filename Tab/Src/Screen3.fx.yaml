@@ -1,14 +1,6 @@
 "Screen3 As screen.'tabletLayout_Calendar_ver3.0'":
     OnVisible: =
 
-    RectMeetingBkg1 As rectangle:
-        Height: =42
-        Visible: =_calendarVisible
-        Width: =682
-        X: =684
-        Y: =RectQuickActionBar1.Height
-        ZIndex: =1
-
     RectQuickActionBar1 As rectangle:
         Height: =64
         Width: =Parent.Width
@@ -216,17 +208,6 @@
             Wrap: =false
             ZIndex: =3
 
-    LblDateSelected1 As label:
-        Height: =RectMeetingBkg1.Height
-        Size: =13
-        Text: =Text(_dateSelected, DateTimeFormat.LongDate)
-        Visible: =_calendarVisible
-        Width: =Parent.Width / 3 - 60
-        Wrap: =false
-        X: =684
-        Y: =RectQuickActionBar1.Height
-        ZIndex: =12
-
     RectCalendarSeparator1 As rectangle:
         Height: =Parent.Height - Self.Y
         Width: =2
@@ -286,10 +267,27 @@
             Y: =Parent.TemplateHeight - 1
             ZIndex: =5
 
+    Rectangle5_1 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(215, 223, 240, 1)
+        Height: =64
+        Width: =682
+        X: =684
+        Y: =64
+        ZIndex: =19
+
     Button2 As button:
         BorderColor: =RGBA(255,255,255,1)
         Text: ="My Task"
         X: =1174
         Y: =12
+        ZIndex: =20
+
+    Label1_1 As label:
+        Size: =15
+        Text: ="2022 / 08 / 20    SAP"
+        Width: =214
+        X: =713
+        Y: =76
         ZIndex: =20
 
