@@ -213,21 +213,22 @@
 
     DatePicker1 As datepicker:
         OnSelect: =Set(_startDay, DatePicker1.SelectedDate)
+        Width: =332
         X: =471
         Y: =167
         ZIndex: =14
 
     DatePicker1_1 As datepicker:
         OnSelect: =Set(_endDay, DatePicker1_1.SelectedDate)
-        X: =846
-        Y: =173
+        X: =873
+        Y: =165
         ZIndex: =15
 
     Button2 As button:
         OnSelect: =Navigate('my task')
         Text: ="REQUEST"
-        X: =1174
-        Y: =658
+        X: =1161
+        Y: =709
         ZIndex: =16
 
     Button2_1 As button:
@@ -236,61 +237,95 @@
         Fill: =RGBA(255, 255, 255, 1)
         OnSelect: =Navigate('my task')
         Text: ="CANCLE"
-        X: =972
-        Y: =658
+        X: =981
+        Y: =709
         ZIndex: =17
 
     Label1 As label:
-        Text: ="DeadLine"
-        X: =471
+        FontWeight: =FontWeight.Semibold
+        Text: ="• DeadLine"
+        X: =456
         Y: =119
         ZIndex: =18
 
     Label1_1 As label:
-        Text: ="Employee to assign"
+        FontWeight: =FontWeight.Semibold
+        Height: =37
+        Text: ="• Employee to assign"
         Width: =200
-        X: =471
-        Y: =233
+        X: =457
+        Y: =222
         ZIndex: =19
 
     TextInput1 As text:
         Default: =""
         HintText: ="ex)example@gmail.com"
         X: =472
-        Y: =287
+        Y: =264
         ZIndex: =20
 
     Label1_2 As label:
+        FontWeight: =FontWeight.Semibold
         Text: |-
-            ="Task
+            ="• Task
             "
         Width: =200
-        X: =472
-        Y: =362
+        X: =457
+        Y: =312
         ZIndex: =21
 
     TextInput2 As text:
+        BorderColor: =RGBA(255, 255, 255, 1)
         Default: =""
-        Height: =56
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =48
         HintText: ="Title"
-        Width: =730
+        Width: =863
         X: =471
-        Y: =402
+        Y: =352
         ZIndex: =22
 
     TextInput2_1 As text:
+        BorderColor: =RGBA(255, 255, 255, 1)
         Default: =""
-        Height: =122
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =230
         HintText: ="Message"
         Mode: =TextMode.MultiLine
-        Width: =730
+        Width: =863
         X: =471
-        Y: =493
+        Y: =411
         ZIndex: =23
 
     Import1 As import:
+        Size: =13
         Text: ="데이터 가져오기"
-        X: =491
-        Y: =658
+        Width: =149
+        X: =472
+        Y: =655
         ZIndex: =24
+
+    Rectangle3_1 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =55
+        OnSelect: =RGBA(237,241,255,1)
+        Width: =944
+        X: =422
+        Y: =64
+        ZIndex: =25
+
+    Label5 As label:
+        Text: ="  2022/2/17 WED"
+        X: =440
+        Y: =71
+        ZIndex: =26
+
+    Label7 As label:
+        Size: =17
+        Text: ="~"
+        Width: =23
+        X: =826
+        Y: =165
+        ZIndex: =27
 
