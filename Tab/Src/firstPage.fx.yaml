@@ -16,10 +16,19 @@ firstPage As screen:
         ZIndex: =2
 
     Button3 As button:
+        Color: =RGBA(0, 18, 107, 1)
+        Fill: =RGBA(255, 255, 255, 1)
         Height: =79
-        Text: ="단추"
+        Size: =40
+        Text: ="Login"
         Width: =264
-        X: =480
-        Y: =492
+        X: =572
+        Y: =300
         ZIndex: =3
+
+    Rectangle2 As rectangle:
+        Width: =272
+        X: =428
+        Y: =392
+        ZIndex: =4
 
