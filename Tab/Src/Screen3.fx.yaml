@@ -208,18 +208,6 @@
             Wrap: =false
             ZIndex: =3
 
-    LblNoEvents1 As label:
-        Align: =Align.Center
-        DisplayMode: =DisplayMode.View
-        Height: =220
-        Size: =15
-        Text: =If(IsBlank(_userDomain), "시작하려면 드롭다운에서 일정 선택", _showLoading, "이벤트를 로드하는 중...", "예약된 이벤트 없음")
-        Visible: =IsBlank(_userDomain) || _showLoading || And(CountRows(CalendarEventsGallery1.AllItems) = 0 && _calendarVisible)
-        Width: =600
-        X: =720
-        Y: =333
-        ZIndex: =15
-
     RectCalendarSeparator1 As rectangle:
         Height: =Parent.Height - Self.Y
         Width: =2
@@ -272,11 +260,34 @@
         Y: =64
         ZIndex: =19
 
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Items: =Planner.GetP
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        X: =726
+        Y: =193
+        ZIndex: =19
+
+        Separator1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
     Label1_1 As label:
         Size: =15
         Text: ="2022 / 08 / 20    SAP"
         Width: =214
         X: =713
         Y: =76
+        ZIndex: =20
+
+    Button2 As button:
+        BorderColor: =RGBA(255,255,255,1)
+        Text: ="My Task"
+        X: =1174
+        Y: =12
         ZIndex: =20
 
