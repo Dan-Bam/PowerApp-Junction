@@ -242,16 +242,18 @@
         ZIndex: =17
 
     Label1 As label:
-        Text: ="DeadLine"
-        X: =471
+        FontWeight: =FontWeight.Semibold
+        Text: ="• DeadLine"
+        X: =456
         Y: =119
         ZIndex: =18
 
     Label1_1 As label:
+        FontWeight: =FontWeight.Semibold
         Height: =37
-        Text: ="Employee to assign"
+        Text: ="• Employee to assign"
         Width: =200
-        X: =472
+        X: =457
         Y: =222
         ZIndex: =19
 
@@ -263,11 +265,12 @@
         ZIndex: =20
 
     Label1_2 As label:
+        FontWeight: =FontWeight.Semibold
         Text: |-
-            ="Task
+            ="• Task
             "
         Width: =200
-        X: =472
+        X: =457
         Y: =312
         ZIndex: =21
 
