@@ -364,7 +364,7 @@
     Button2 As button:
         BorderColor: =RGBA(255,255,255,1)
         Text: ="My Task"
-        X: =1174
+        X: =1145
         Y: =18
         ZIndex: =17
 
@@ -390,31 +390,31 @@
         DisplayMode: =DisplayMode.View
         Fill: =RGBA(253, 223, 223, 1)
         OnSelect: =Set(first, "red")
-        X: =1216
-        Y: =335
+        X: =1142
+        Y: =309
         ZIndex: =21
 
     Rectangle6_1 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(254, 255, 197, 1)
         OnSelect: =Set(second, "yellow")
-        X: =1216
-        Y: =445
+        X: =1147
+        Y: =423
         ZIndex: =22
 
     Rectangle6_2 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(201, 255, 197, 1)
         OnSelect: =Set(third, "green")
-        X: =1216
-        Y: =553
+        X: =1142
+        Y: =544
         ZIndex: =23
 
     Rectangle6_3 As rectangle:
         BorderColor: =RGBA(0, 0, 0, 0)
         Fill: =RGBA(175, 236, 255, 1)
         OnSelect: =Set(forth, "blue")
-        X: =1216
+        X: =1145
         Y: =668
         ZIndex: =24
 
