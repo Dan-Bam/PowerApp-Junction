@@ -378,8 +378,9 @@
         ZIndex: =19
 
     Label1 As label:
+        Size: =15
         Text: ="2022 / 08 / 20    SAP"
-        Width: =173
+        Width: =204
         X: =451
         Y: =96
         ZIndex: =20
