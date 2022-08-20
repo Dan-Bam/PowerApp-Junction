@@ -1,3 +1,11 @@
 Screen2 As screen:
-    Fill: =RGBA(0, 18, 107, 1)
+    Fill: =RGBA(255, 255, 255, 1)
+
+    Label1 As label:
+        AutoHeight: =
+        FontWeight: =FontWeight.Semibold
+        Text: =Calendar.MonthsLong()
+        X: =40
+        Y: =40
+        ZIndex: =1
 
