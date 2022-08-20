@@ -1,87 +1,23 @@
 "'my task' As screen.'tabletLayout_Calendar_ver3.0'":
 
     Button1 As button:
-        BorderColor: |
-            =RGBA(226,226,266,1)
+        BorderColor: =RGBA(215, 223, 240, 1)
         Color: =RGBA(0, 0, 0, 1)
         DisabledFill: =RGBA(166, 166, 166, 1)
-        Fill: =RGBA(219, 219, 219, 1)
+        Fill: =RGBA(215, 223, 240, 1)
         FontWeight: =FontWeight.Normal
         Height: =115
-        PressedBorderColor: =RGBA(226,226,226,1)
+        PressedBorderColor: =RGBA(136, 160, 209, 1)
+        PressedColor: |
+            =RGBA(237,241,255,1)
+        RadiusBottomLeft: =30
+        RadiusBottomRight: =30
+        RadiusTopLeft: =30
+        RadiusTopRight: =30
         Size: =40
-        Text: ="+ New Task"
+        Text: ="+ Assign Task"
         Width: =570
         X: =404
         Y: =626
         ZIndex: =1
-
-    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-        Items: =CustomGallerySample
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =Min(160, Self.Height - 60)
-        Width: =1195
-        X: =92
-        Y: =19
-        ZIndex: =2
-
-        Image2 As image:
-            Height: =128
-            OnSelect: =Select(Parent)
-            Width: =128
-            X: =16
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =1
-
-        Title3 As label:
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.SampleHeading
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Parent.TemplateWidth - Image2.Width - 104
-            X: =Image2.X + Image2.Width + 24
-            Y: =44
-            ZIndex: =2
-
-        Subtitle1 As label:
-            Height: =Self.Size * 1.8
-            OnSelect: =Select(Parent)
-            PaddingBottom: =0
-            PaddingLeft: =0
-            PaddingRight: =0
-            PaddingTop: =0
-            Text: =ThisItem.SampleText
-            VerticalAlign: =VerticalAlign.Top
-            Width: =Title3.Width
-            X: =Title3.X
-            Y: =Title3.Y + Title3.Height + 4
-            ZIndex: =3
-
-        NextArrow1 As icon.ChevronRight:
-            AccessibleLabel: =Self.Tooltip
-            Height: =60
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Parent)
-            PaddingBottom: =10
-            PaddingLeft: =10
-            PaddingRight: =10
-            PaddingTop: =10
-            TabIndex: =0
-            Tooltip: ="항목 세부 정보 보기"
-            Width: =60
-            X: =Parent.TemplateWidth - Self.Width - 5
-            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-            ZIndex: =4
-
-        Separator1 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =5
 
