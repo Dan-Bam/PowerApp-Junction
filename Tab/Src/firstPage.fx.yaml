@@ -16,10 +16,11 @@ firstPage As screen:
         ZIndex: =2
 
     Rectangle2 As rectangle:
+        FocusedBorderColor: =
         Height: =85
         Width: =272
-        X: =424
-        Y: =396
+        X: =500
+        Y: =524
         ZIndex: =3
 
     Button3 As button:
@@ -33,7 +34,7 @@ firstPage As screen:
         Size: =40
         Text: ="Login"
         Width: =264
-        X: =436
-        Y: =392
+        X: =512
+        Y: =520
         ZIndex: =4
 
