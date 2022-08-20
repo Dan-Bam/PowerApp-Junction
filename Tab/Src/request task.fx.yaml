@@ -230,8 +230,8 @@
             );
             Navigate('my task')
         Text: ="REQUEST"
-        X: =1161
-        Y: =709
+        X: =1174
+        Y: =658
         ZIndex: =16
 
     Button2_1 As button:
@@ -240,8 +240,8 @@
         Fill: =RGBA(255, 255, 255, 1)
         OnSelect: =Navigate('my task')
         Text: ="CANCLE"
-        X: =981
-        Y: =709
+        X: =994
+        Y: =658
         ZIndex: =17
 
     Label1 As label:
