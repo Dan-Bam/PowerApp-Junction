@@ -384,3 +384,9 @@
         Y: =76
         ZIndex: =19
 
+    Label1 As label:
+        Text: ="2022 / 08 / 20 SAP"
+        X: =451
+        Y: =96
+        ZIndex: =20
+
