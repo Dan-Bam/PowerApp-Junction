@@ -213,6 +213,7 @@
 
     DatePicker1 As datepicker:
         OnSelect: =Set(_startDay, DatePicker1.SelectedDate)
+        Width: =332
         X: =471
         Y: =167
         ZIndex: =14
@@ -220,7 +221,7 @@
     DatePicker1_1 As datepicker:
         OnSelect: =Set(_endDay, DatePicker1_1.SelectedDate)
         X: =846
-        Y: =173
+        Y: =167
         ZIndex: =15
 
     Button2 As button:
@@ -247,17 +248,18 @@
         ZIndex: =18
 
     Label1_1 As label:
+        Height: =37
         Text: ="Employee to assign"
         Width: =200
-        X: =471
-        Y: =233
+        X: =472
+        Y: =222
         ZIndex: =19
 
     TextInput1 As text:
         Default: =""
         HintText: ="ex)example@gmail.com"
         X: =472
-        Y: =287
+        Y: =264
         ZIndex: =20
 
     Label1_2 As label:
@@ -297,4 +299,28 @@
         X: =491
         Y: =658
         ZIndex: =24
+
+    Rectangle3_1 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =55
+        OnSelect: =RGBA(237,241,255,1)
+        Width: =944
+        X: =422
+        Y: =64
+        ZIndex: =25
+
+    Label5 As label:
+        Text: ="  2022/2/17 WED"
+        X: =440
+        Y: =71
+        ZIndex: =26
+
+    Icon1 As icon.HorizontalLine:
+        Height: =52
+        Icon: =Icon.HorizontalLine
+        Width: =20
+        X: =814
+        Y: =161
+        ZIndex: =27
 
