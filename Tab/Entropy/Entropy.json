@@ -27,6 +27,7 @@
     "iconNextMonth2": 28,
     "iconPrevMonth1": 53,
     "iconPrevMonth2": 27,
+    "Image1": 72,
     "Label1": 12,
     "Label2": 69,
     "LblAppName1": 46,
@@ -75,15 +76,19 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "08/20/2022 08:13:13",
+  "HeaderLastSavedDateTimeUTC": "08/20/2022 08:17:43",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "1b0554db-ad3c-4994-9da3-24b47e15ef45": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/b36afbd92aa9426e96a7f76b1e3d584a\"",
     "4a7295f9-8d38-4cd1-a7f3-26f5bab6fdef": "\"/providers/microsoft.powerapps/apis/shared_office365/connections/d0550b27c5ed4038a0b07bd5087be8aa\""
   },
   "LocalDatabaseReferencesAsEmpty": false,
-  "LocalResourceFileNames": {},
-  "LocalResourceRootPaths": {},
+  "LocalResourceFileNames": {
+    "image 1": "d925ed66-ec9a-4775-b00a-a75fc29c35fd.svg"
+  },
+  "LocalResourceRootPaths": {
+    "image 1": "https://docserverpwaprodwus.blob.core.windows.net/96dcc4b2-d2f1-446b-a055-652562547c85-1/resource/9f429494-b371-4493-8009-a393f0b4cfa7.svg?sv=2017-04-17&sr=b&sig=Gs0mD3hw7ZzXzArHByKWHtPGm%2Bg3gj8k6vlPGZVKb6w%3D&spr=https&se=2022-08-21T08%3A32%3A36Z&sp=r"
+  },
   "OrderComponentMetadata": {},
   "OrderComponentTemplate": {},
   "OrderDataSource": {
@@ -103,6 +108,7 @@
     "dropdown": 3,
     "gallery": 5,
     "icon": 4,
+    "image": 8,
     "label": 1,
     "rectangle": 0
   },
@@ -132,6 +138,7 @@
     "iconNextMonth2": 46,
     "iconPrevMonth1": 9,
     "iconPrevMonth2": 45,
+    "Image1": 0,
     "Label1": 30,
     "Label2": 0,
     "LblAppName1": 2,
@@ -178,7 +185,10 @@
     "WeekdayGallery1": 14,
     "WeekdayGallery2": 48
   },
-  "ResourcesJsonIndices": {},
+  "ResourcesJsonIndices": {
+    "Image-image 1": 1,
+    "Image-SampleImage": 0
+  },
   "RuleScreenIdWithoutScreen": {},
   "TemplateVersions": {},
   "VolatileProperties": {

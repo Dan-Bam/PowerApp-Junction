@@ -38,3 +38,11 @@ firstPage As screen:
         Y: =520
         ZIndex: =4
 
+    Image1 As image:
+        Image: ='image 1'
+        ImagePosition: =ImagePosition.Fill
+        Width: =192
+        X: =705
+        Y: =237
+        ZIndex: =5
+
