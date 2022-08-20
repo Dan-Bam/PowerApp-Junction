@@ -61,29 +61,3 @@
         Y: =106
         ZIndex: =6
 
-    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-        Height: =421
-        Items: |-
-            =Office365Outlook.GetEventsCalendarViewV3(
-                varUserCalendarId, 
-                "2022-01-01T08:00:00-07:00", 
-                "2023-01-01T08:00:00-07:00"
-            ).value
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =402
-        Width: =1290
-        X: =51
-        Y: =168
-        ZIndex: =7
-
-        Label8 As label:
-            Fill: =RGBA(200, 200, 50, 0.5)
-            Height: =78
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.subject
-            Width: =1162
-            X: =40
-            Y: =40
-            ZIndex: =5
-
