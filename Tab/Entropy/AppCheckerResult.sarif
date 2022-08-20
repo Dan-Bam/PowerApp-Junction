@@ -1153,19 +1153,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'my task'.Form1.제목_DataCard2.DataCardValue2.AccessibleLabel"
+                  "fullyQualifiedName": "'my task'.Form2.제목_DataCard3.DataCardValue3.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'my task'.Form1.제목_DataCard2.DataCardValue2.AccessibleLabel",
+                  "fullyQualifiedName": "'my task'.Form2.제목_DataCard3.DataCardValue3.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "my task",
-                "type": "'my task'.Form1.제목_DataCard2.DataCardValue2"
+                "type": "'my task'.Form2.제목_DataCard3.DataCardValue3"
               }
             }
           ],

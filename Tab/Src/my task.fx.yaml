@@ -61,13 +61,13 @@
         Y: =106
         ZIndex: =6
 
-    Form1 As form:
+    Form2 As form:
         DataSource: =문서
         X: =40
         Y: =40
         ZIndex: =7
 
-        제목_DataCard2 As typedDataCard.textualEditCard:
+        제목_DataCard3 As typedDataCard.textualEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="Title"
             Default: =ThisItem.제목
@@ -77,13 +77,13 @@
             Height: =50
             MaxLength: =DataSourceInfo([@문서], DataSourceInfo.MaxLength, "Title")
             Required: =false
-            Update: =DataCardValue2.Text
+            Update: =DataCardValue3.Text
             Width: =266
             X: =0
             Y: =0
             ZIndex: =8
 
-            DataCardKey2 As label:
+            DataCardKey3 As label:
                 AutoHeight: =true
                 Height: =34
                 Text: =Parent.DisplayName
@@ -93,7 +93,7 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue2 As text:
+            DataCardValue3 As text:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
                 Default: =Parent.Default
                 DelayOutput: =true
@@ -107,10 +107,10 @@
                 Tooltip: =Parent.DisplayName
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardKey2.Y + DataCardKey2.Height + 5
+                Y: =DataCardKey3.Y + DataCardKey3.Height + 5
                 ZIndex: =2
 
-            ErrorMessage2 As label:
+            ErrorMessage3 As label:
                 AutoHeight: =true
                 Height: =10
                 Live: =Live.Assertive
@@ -122,16 +122,16 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue2.Y + DataCardValue2.Height
+                Y: =DataCardValue3.Y + DataCardValue3.Height
                 ZIndex: =3
 
-            StarVisible2 As label:
+            StarVisible3 As label:
                 Align: =Align.Center
-                Height: =DataCardKey2.Height
+                Height: =DataCardKey3.Height
                 Text: ="*"
                 Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                 Width: =30
                 Wrap: =false
-                Y: =DataCardKey2.Y
+                Y: =DataCardKey3.Y
                 ZIndex: =4
 
