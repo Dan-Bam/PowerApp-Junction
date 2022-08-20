@@ -9,7 +9,7 @@
         ZIndex: =1
 
     RectQuickActionBar3 As rectangle:
-        Height: =64
+        Height: =76
         Width: =Parent.Width
         ZIndex: =2
 
@@ -364,7 +364,14 @@
     Button2 As button:
         BorderColor: =RGBA(255,255,255,1)
         Text: ="My Task"
-        X: =1174
-        Y: =12
+        X: =983
+        Y: =18
         ZIndex: =17
+
+    Button2_1 As button:
+        BorderColor: =RGBA(255,255,255,1)
+        Text: ="My Task"
+        X: =1185
+        Y: =18
+        ZIndex: =18
 
