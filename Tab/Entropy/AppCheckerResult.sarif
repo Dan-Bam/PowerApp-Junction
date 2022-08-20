@@ -1213,6 +1213,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.first"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.first",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "first",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.second"
                 }
               ],
