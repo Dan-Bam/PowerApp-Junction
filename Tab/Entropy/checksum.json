@@ -6,6 +6,7 @@
   "ClientPerFileChecksums": {
     "AppCheckerResult.sarif": "C8_ndjQ9tnGsye08/EHLLeaKNmL8S88LD9W4O5fIoGya7k=",
     "Controls\\1.json": "C8_DxuHHiPeyyuFhYCYipObPGR/XuUWE04niIJno/Jsb9k=",
+<<<<<<< HEAD
     "Controls\\28.json": "C8_mhXdnYShTkSg/MVDvdCaCc++ACXWfWTacNRnnHSYq5M=",
     "Controls\\29.json": "C8_I/J+6qu1UbxE/HQ+ymSPWOqh63CRoNIIUbfWUdGXG+c=",
     "Controls\\3.json": "C8_5lEimMzFknLowWKIciNtIdDeGLW67Z+FCkXqTofHNLU=",
@@ -20,9 +21,27 @@
     "Resources\\PublishInfo.json": "C8_AKFJQlJDaxNBZ5ztiziUe/9WRE+mt+axhyLV/Q3a87E="
   },
   "ClientStampedChecksum": "C8_JUlZ9P3VHIeAUWvoISCLs7ohSx40YTDw4XU4vXG0mn0=",
+=======
+    "Controls\\14.json": "C8_GHwtO5qnt7+IWck0A68YhC3bWKQdyeHgEiVWo5B4/oo=",
+    "Controls\\16.json": "C8_fyJot6wYrTciV6FeKfV7lp4gtyKYblGVy/Y8CIUjAvI=",
+    "Controls\\17.json": "C8_3qY42CE7mtm6xn/5MdqXnatunP41GfxDFhhnTr87St8=",
+    "Controls\\3.json": "C8_5/cbQkvoLj0WlEHDxJGqc28GU9+bSBK+GgSqTsLFYoE=",
+    "Controls\\43.json": "C8_rvKcYs6OjbKCJO1haEYayGVA79aRyrxkY2Hq6YsEuvM=",
+    "Controls\\9.json": "C8_06IqHIvJZ+K39ygzv44dmO64JvR+UQnoqQJXAaMNZKY=",
+    "Header.json": "C8_ZZGZQL0g+OmMb75aC+Wg/kIrRkR5rn8kB4L51m8MvdM=",
+    "Properties.json": "C8_BPWAWGMfZ6fHIdhZ9MKWXl2wAfUHvmsgejb+eiZSk3A=",
+    "References\\DataSources.json": "C8_J5DIhzVpJ6KmVPEOJT4B3wWLql2FObx1VgOKgUx5nws=",
+    "References\\Resources.json": "C8_qRPlV2tL4js5qHj9A7WbTSnUaeI21EtXamlEZBuC0q8=",
+    "References\\Templates.json": "C8_bdBNWecl5GfP9zGMO3WwXH66f6UUaSgaaYv3p1AA+dw=",
+    "References\\Themes.json": "C8_ICevVr7hFBimNEmK/6NDb4YE2H0Ri8BUiWgASaENw7U=",
+    "Resources\\PublishInfo.json": "C8_AKFJQlJDaxNBZ5ztiziUe/9WRE+mt+axhyLV/Q3a87E="
+  },
+  "ClientStampedChecksum": "C8_r1NeF7TfLtCyrG1qQ9paefxW7Dkj5Yt9cxUz+j6kLts=",
+>>>>>>> parent of 1c3817c (SmartMerge, 일반적인 상위 항목 사용: 1ba4b96267cbf2e582f40ec8917eeaeb5734ddd4)
   "ServerPerFileChecksums": {
     "AppCheckerResult.sarif": "C8_ndjQ9tnGsye08/EHLLeaKNmL8S88LD9W4O5fIoGya7k=",
     "Controls\\1.json": "C8_DxuHHiPeyyuFhYCYipObPGR/XuUWE04niIJno/Jsb9k=",
+<<<<<<< HEAD
     "Controls\\28.json": "C8_mhXdnYShTkSg/MVDvdCaCc++ACXWfWTacNRnnHSYq5M=",
     "Controls\\29.json": "C8_I/J+6qu1UbxE/HQ+ymSPWOqh63CRoNIIUbfWUdGXG+c=",
     "Controls\\3.json": "C8_5lEimMzFknLowWKIciNtIdDeGLW67Z+FCkXqTofHNLU=",
@@ -37,4 +56,21 @@
     "Resources\\PublishInfo.json": "C8_AKFJQlJDaxNBZ5ztiziUe/9WRE+mt+axhyLV/Q3a87E="
   },
   "ServerStampedChecksum": "C8_JUlZ9P3VHIeAUWvoISCLs7ohSx40YTDw4XU4vXG0mn0="
+=======
+    "Controls\\14.json": "C8_GHwtO5qnt7+IWck0A68YhC3bWKQdyeHgEiVWo5B4/oo=",
+    "Controls\\16.json": "C8_fyJot6wYrTciV6FeKfV7lp4gtyKYblGVy/Y8CIUjAvI=",
+    "Controls\\17.json": "C8_3qY42CE7mtm6xn/5MdqXnatunP41GfxDFhhnTr87St8=",
+    "Controls\\3.json": "C8_5/cbQkvoLj0WlEHDxJGqc28GU9+bSBK+GgSqTsLFYoE=",
+    "Controls\\43.json": "C8_rvKcYs6OjbKCJO1haEYayGVA79aRyrxkY2Hq6YsEuvM=",
+    "Controls\\9.json": "C8_06IqHIvJZ+K39ygzv44dmO64JvR+UQnoqQJXAaMNZKY=",
+    "Header.json": "C8_ZZGZQL0g+OmMb75aC+Wg/kIrRkR5rn8kB4L51m8MvdM=",
+    "Properties.json": "C8_BPWAWGMfZ6fHIdhZ9MKWXl2wAfUHvmsgejb+eiZSk3A=",
+    "References\\DataSources.json": "C8_J5DIhzVpJ6KmVPEOJT4B3wWLql2FObx1VgOKgUx5nws=",
+    "References\\Resources.json": "C8_qRPlV2tL4js5qHj9A7WbTSnUaeI21EtXamlEZBuC0q8=",
+    "References\\Templates.json": "C8_bdBNWecl5GfP9zGMO3WwXH66f6UUaSgaaYv3p1AA+dw=",
+    "References\\Themes.json": "C8_ICevVr7hFBimNEmK/6NDb4YE2H0Ri8BUiWgASaENw7U=",
+    "Resources\\PublishInfo.json": "C8_AKFJQlJDaxNBZ5ztiziUe/9WRE+mt+axhyLV/Q3a87E="
+  },
+  "ServerStampedChecksum": "C8_r1NeF7TfLtCyrG1qQ9paefxW7Dkj5Yt9cxUz+j6kLts="
+>>>>>>> parent of 1c3817c (SmartMerge, 일반적인 상위 항목 사용: 1ba4b96267cbf2e582f40ec8917eeaeb5734ddd4)
 }
