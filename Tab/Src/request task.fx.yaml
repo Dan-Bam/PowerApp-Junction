@@ -208,7 +208,7 @@
 
     DatePicker1 As datepicker:
         OnSelect: =Set(_startDay, DatePicker1.SelectedDate)
-        Width: =172
+        Width: =153
         X: =471
         Y: =167
         ZIndex: =14
@@ -216,7 +216,7 @@
     DatePicker1_1 As datepicker:
         OnSelect: =Set(_endDay, DatePicker1_1.SelectedDate)
         Width: =155
-        X: =691
+        X: =668
         Y: =167
         ZIndex: =15
 
@@ -321,7 +321,7 @@
         Size: =17
         Text: ="~"
         Width: =23
-        X: =657
+        X: =634
         Y: =167
         ZIndex: =27
 
