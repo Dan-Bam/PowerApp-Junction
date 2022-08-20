@@ -244,7 +244,8 @@
         TemplateSize: =85
         Visible: =_calendarVisible
         Width: =Parent.Width - Self.X
-        X: =419
+        X: =422
+        Y: =LblDateSelected2.Y + LblDateSelected2.Height
         ZIndex: =13
 
         Rectangle4 As rectangle:
