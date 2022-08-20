@@ -1,95 +1,23 @@
 {
   "ComponentIndexes": {},
   "ControlUniqueGuids": {},
-  "ControlUniqueIds": {
-    "App": 1,
-    "Button1": 17,
-    "Button3": 6,
-    "Button4": 7,
-    "Image1": 8,
-    "Label2": 5,
-    "Login": 3,
-    "main task": 9,
-    "Properties": 10,
-    "Rectangle6_4": 11,
-    "Rectangle6_5": 12,
-    "Rectangle6_6": 13,
-    "Rectangle6_7": 14,
-    "RectQuickActionBar1_1": 4,
-    "request task": 15,
-    "Screen1": 16,
-    "Screen2": 18
-  },
+  "ControlUniqueIds": {},
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "08/20/2022 08:50:56",
   "IsLegacyComponentAllowGlobalScopeCase": false,
-  "LocalConnectionIDReferences": {
-    "1b0554db-ad3c-4994-9da3-24b47e15ef45": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/1166f95ba8de4e4aa4939009cfa9597d\"",
-    "4a7295f9-8d38-4cd1-a7f3-26f5bab6fdef": "\"/providers/microsoft.powerapps/apis/shared_office365/connections/c33af229c58642cbb616a2581dc2e28a\"",
-    "c4181457-d2ca-452d-bc4b-b9e417a389c2": "\"/providers/microsoft.powerapps/apis/shared_planner/connections/3326488e4caa45d68e4adfe45627971d\""
-  },
+  "LocalConnectionIDReferences": {},
   "LocalDatabaseReferencesAsEmpty": false,
-  "LocalResourceFileNames": {
-    "image 1": "0001.svg"
-  },
-  "LocalResourceRootPaths": {
-    "image 1": "https://docserverpwaprodwus.blob.core.windows.net/401bbb67-abea-42e5-97a9-314b2a8e1bc0-1/resource/Assets0Images00001.svg?sv=2017-04-17&sr=b&sig=r5FG86c74wn%2FLBN8LFYx98zOtC%2Foy8Rj2GAyyy4M744%3D&spr=https&se=2022-08-21T09%3A02%3A34Z&sp=r"
-  },
+  "LocalResourceFileNames": {},
+  "LocalResourceRootPaths": {},
   "OrderComponentMetadata": {},
   "OrderComponentTemplate": {},
-  "OrderDataSource": {
-    "CustomGallerySample": 3,
-    "DropDownSample": 4,
-    "Office365Outlook": 0,
-    "Office365사용자": 1,
-    "Planner": 2
-  },
+  "OrderDataSource": {},
   "OrderGroupControls": {},
   "OrderPcfTemplate": {},
   "OrderTemplate": {},
-  "OrderXMLTemplate": {
-    "button": 2,
-    "image": 3,
-    "label": 1,
-    "rectangle": 0
-  },
-  "PublishOrderIndices": {
-    "App": 0,
-    "Button1": 16,
-    "Button3": 5,
-    "Button4": 6,
-    "Image1": 7,
-    "Label2": 4,
-    "Login": 2,
-    "main task": 8,
-    "Properties": 9,
-    "Rectangle6_4": 10,
-    "Rectangle6_5": 11,
-    "Rectangle6_6": 12,
-    "Rectangle6_7": 13,
-    "RectQuickActionBar1_1": 3,
-    "request task": 14,
-    "Screen1": 15,
-    "Screen2": 17
-  },
-  "ResourcesJsonIndices": {
-    "Image-image 1": 1,
-    "Image-SampleImage": 0
-  },
+  "OrderXMLTemplate": {},
+  "PublishOrderIndices": {},
+  "ResourcesJsonIndices": {},
   "RuleScreenIdWithoutScreen": {},
-  "TemplateVersions": {},
-  "VolatileProperties": {
-    "AnalysisLoadTime": 0.0374449,
-    "ControlCount": {
-      "button": 3,
-      "image": 1,
-      "label": 1,
-      "rectangle": 5,
-      "screen": 6
-    },
-    "DeserializationLoadTime": 0.407223,
-    "ErrorCount": 0
-  },
-  "WasLocalDatabaseReferencesEmpty": true
+  "TemplateVersions": {}
 }
