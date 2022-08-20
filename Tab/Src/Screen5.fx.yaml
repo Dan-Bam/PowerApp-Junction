@@ -385,3 +385,35 @@
         Y: =88
         ZIndex: =20
 
+    Rectangle6 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(253, 223, 223, 1)
+        OnSelect: =Set(Name, "red")
+        X: =460
+        Y: =175
+        ZIndex: =21
+
+    Rectangle6_1 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(254, 255, 197, 1)
+        OnSelect: =Set(Name, "yellow")
+        X: =460
+        Y: =285
+        ZIndex: =22
+
+    Rectangle6_2 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(201, 255, 197, 1)
+        OnSelect: =Set(Name, "green")
+        X: =460
+        Y: =393
+        ZIndex: =23
+
+    Rectangle6_3 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(175, 236, 255, 1)
+        OnSelect: =Set(Name, "blue")
+        X: =460
+        Y: =508
+        ZIndex: =24
+
