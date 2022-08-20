@@ -1,749 +1,363 @@
-"Screen4 As screen.'tabletLayout_Meeting_ver3.0'":
+"Screen4 As screen.'tabletLayout_Calendar_ver3.0'":
+
+    RectMeetingBkg3 As rectangle:
+        Height: =42
+        Visible: =_calendarVisible
+        Width: =Parent.Width - Self.X
+        X: =422
+        Y: =RectQuickActionBar2.Height
+        ZIndex: =1
 
     RectQuickActionBar2 As rectangle:
         Height: =64
         Width: =Parent.Width
-        ZIndex: =1
+        ZIndex: =2
 
     LblAppName2 As label:
         Height: =64
-        Text: ="모임"
-        Width: =356
+        PaddingLeft: =0
+        Text: ="캘린더"
+        Width: =Parent.Width - Self.X * 2
         Wrap: =false
-        X: =20
-        ZIndex: =2
-
-    IconSendItem1 As icon.Send:
-        AccessibleLabel: =Self.Tooltip
-        DisabledFill: =RGBA(240, 240, 240, 0.5)
-        DisplayMode: =If(Len(Trim(TextMeetingSubject1.Text)) > 0 && !IsEmpty(MyPeople) && !IsBlank(_selectedMeetingTime), DisplayMode.Edit, DisplayMode.Disabled)
-        Icon: =Icon.Send
-        OnSelect: |-
-            =/*sends a meeting invite if necessary fields are filled out (attendees, subject, meeting time selection)*/
-            Set(_myCalendarName, LookUp(Office365Outlook.CalendarGetTables().value, DisplayName = "Calendar").Name);
-            Set(_myScheduledMeeting, Office365Outlook.V2CalendarPostItem(_myCalendarName,
-             TextMeetingSubject1.Text, Text(DateAdd(DateTimeValue(_selectedMeetingTime.StartTime), -TimeZoneOffset(), Minutes)),
-             Text(DateAdd(DateTimeValue(_selectedMeetingTime.EndTime), -TimeZoneOffset(), Minutes)),
-             {RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";") & _selectedRoom.Address, Body: TextMeetingMessage1.Text, Location: _selectedRoom.Name, Importance: "Normal", ShowAs:"Busy", ResponseRequested: true}));
-             Concurrent(
-               Reset(TextMeetingLocation1),
-               Reset(TextMeetingSubject1),
-               Reset(TextMeetingMessage1),
-               Clear(MyPeople),
-               Set(_selectedMeetingTime, Blank()),
-               Set(_selectedRoomList, Blank()),
-               Set(_selectedRoom, Blank()),
-               Set(_roomListSelected, false)
-            )
-        PaddingBottom: =14
-        PaddingLeft: =14
-        PaddingRight: =14
-        PaddingTop: =14
-        TabIndex: =0
-        Tooltip: ="초대 보내기"
-        X: =Parent.Width - Self.Width
+        X: =32
         ZIndex: =3
 
-    LblInviteTab1 As label:
+    LblResetToday3 As label:
         Align: =Align.Center
-        BorderColor: =Self.Color
-        Color: =If(_showDetails, LblRecipientCount1.Color, RectQuickActionBar2.Fill)
-        FocusedBorderThickness: =2
-        FontWeight: =If(_showDetails, FontWeight.Normal, FontWeight.Semibold)
-        Height: =25
-        OnSelect: =Set(_showDetails, false)
-        Size: =12
-        TabIndex: =0
-        Text: ="초대"
-        Tooltip: ="모임 제목, 본문 및 참석자를 입력하려면 선택"
-        Width: =Parent.Width / 2 - 55.5
-        Wrap: =false
-        X: =32
-        Y: =RectQuickActionBar2.Height + 16
+        Color: =iconCalendar3.Color
+        FontWeight: =FontWeight.Bold
+        Height: =iconCalendar3.Height
+        PaddingTop: =12
+        Size: =11
+        Text: =DateDiff(Date(Year(Today()), Month(Today()), 1), Today(), Days) + 1
+        Width: =iconCalendar3.Width
+        X: =iconCalendar3.X
+        Y: =iconCalendar3.Y
         ZIndex: =4
 
-    LblScheduleTab1 As label:
-        Align: =Align.Center
-        BorderColor: =Self.Color
-        Color: =If(!_showDetails, LblRecipientCount1.Color, RectQuickActionBar2.Fill)
-        FocusedBorderThickness: =2
-        FontWeight: =If(!_showDetails, FontWeight.Normal, FontWeight.Semibold)
-        Height: =25
-        OnSelect: =Set(_showDetails, true)
-        Size: =12
+    iconCalendar3 As icon.CalendarBlank:
+        Height: =40
+        Icon: =Icon.CalendarBlank
+        OnSelect: |-
+            =/*resets calendar view and date selection to today*/
+            Set(_dateSelected, Today());
+            Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), Days));
+            Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));
+            Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days))
         TabIndex: =0
-        Text: ="일정"
-        Tooltip: ="모임 날짜, 기간 및 위치를 입력하려면 선택"
-        Width: =Parent.Width / 2 - 55.5
-        Wrap: =false
-        X: =LblInviteTab1.X + LblInviteTab1.Width + 3
-        Y: =RectQuickActionBar2.Height + 16
+        Tooltip: ="선택한 날짜를 오늘로 다시 설정"
+        Width: =40
+        X: =395 - Self.Width
+        Y: =dropdownCalendarSelection3.Y
         ZIndex: =5
 
-    RectHeaderSep1 As rectangle:
-        Height: =2
-        Width: =Parent.Width
-        Y: =LblInviteTab1.Y + LblInviteTab1.Height + 8
+    dropdownCalendarSelection3 As dropdown:
+        Default: =_myCalendar.DisplayName
+        Items: =Office365Outlook.CalendarGetTables().value
+        OnChange: =Select(dropdownCalendarSelection3)
+        OnSelect: |-
+            =/*retrieves calendar events for all days in current month view and selected calendar 
+            _minDate and _maxDate act as markers to prevent duplicate data collection*/         
+            If(IsBlank(_userDomain),         
+            	UpdateContext({_showLoading: true});         
+            	Set(_userDomain, Right(User().Email, Len(User().Email) - Find("@", User().Email)));         
+            	Set(_dateSelected, Today());         
+            	Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), Days));         
+            	Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
+            	Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days))         
+            );         
+            Set(_calendarVisible, false);         
+            UpdateContext({_showLoading: true});         
+            Set(_myCalendar, Self.Selected);         
+            Set(_minDate, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
+            Set(_maxDate, DateAdd(DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days), 40, Days));         
+            ClearCollect(MyCalendarEvents, Office365Outlook.GetEventsCalendarViewV2(_myCalendar.Name, Text(_minDate, UTC), Text(_maxDate, UTC)).value);         
+            UpdateContext({_showLoading: false});         
+            Set(_calendarVisible, true)
+        Tooltip: ="일정 선택"
+        Width: =307
+        X: =32
+        Y: =RectQuickActionBar2.Height + 24
         ZIndex: =6
 
-    RectTabSelect1 As rectangle:
-        Height: =2
-        Width: =LblInviteTab1.Width + 3
-        X: =If(_showDetails, LblScheduleTab1.X - 1.5, LblInviteTab1.X - 1.5)
-        Y: =LblInviteTab1.Y + LblInviteTab1.Height + 8
+    LblMonthSelected3 As label:
+        Align: =Align.Center
+        Height: =50
+        Size: =18
+        Text: =Text(_firstDayOfMonth, "mmmm yyyy")
+        Visible: =_calendarVisible
+        Width: =419
+        Wrap: =false
+        Y: =dropdownCalendarSelection3.Y + dropdownCalendarSelection3.Height + 40
         ZIndex: =7
 
-    LblRecipientCount1 As label:
-        Height: =26
-        Size: =13
-        Text: ="*참석자 (" &CountRows(MeetingPeopleGallery1.AllItems) & ")"
-        Visible: =!_showDetails
-        Width: =200
-        Wrap: =false
-        X: =32
-        Y: =RectTabSelect1.Y + RectTabSelect1.Height + 24
+    iconPrevMonth3 As icon.ChevronLeft:
+        Height: =50
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =/*changes month view to previous month*/
+            Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, -1, Months));
+            Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));
+            Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days));
+            /*collects calendar events for all days in current month view. Updates _minDate to prevent duplicate data collection if user returns to this month view*/
+            If(_minDate > _firstDayOfMonth, Set(_minDate, _firstDayOfMonth); Collect(MyCalendarEvents, Office365Outlook.GetEventsCalendarViewV2(_myCalendar.Name, Text(_minDate, UTC), Text(_lastDayOfMonth, UTC)).value))
+        PaddingBottom: =7
+        PaddingLeft: =7
+        PaddingRight: =7
+        PaddingTop: =7
+        TabIndex: =0
+        Tooltip: ="이전 달 보기"
+        Visible: =_calendarVisible
+        Width: =59
+        Y: =LblMonthSelected3.Y
         ZIndex: =8
 
-    TextSearchBox1 As text:
-        AccessibleLabel: ="사용자를 검색하거나 이메일 주소를 추가합니다. 제출하려면 한 명 이상의 받는 사람이 있어야 합니다."
-        Default: =""
-        HintText: ="사람 검색"
-        PaddingLeft: =40
-        Visible: =!_showDetails
-        Width: =Parent.Width - Self.X * 2
-        X: =32
-        Y: =LblRecipientCount1.Y + LblRecipientCount1.Height + 6
+    iconNextMonth3 As icon.ChevronRight:
+        Height: =50
+        Icon: =Icon.ChevronRight
+        OnSelect: |-
+            =/*changes month view to next month*/
+            Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, 1, Months));
+            Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));
+            /*collects calendar events for all days in current month view. Updates _maxDate to prevent duplicate data collection if user returns to this month view*/
+            Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days));
+            If(_lastDayOfMonth > _maxDate, Set(_maxDate, _lastDayOfMonth); Collect(MyCalendarEvents, Office365Outlook.GetEventsCalendarViewV2(_myCalendar.Name, Text(_firstDayOfMonth, UTC), Text(_maxDate, UTC)).value))
+        PaddingBottom: =7
+        PaddingLeft: =7
+        PaddingRight: =7
+        PaddingTop: =7
+        TabIndex: =0
+        Tooltip: ="다음 달 보기"
+        Visible: =_calendarVisible
+        Width: =59
+        X: =419 - Self.Width
+        Y: =LblMonthSelected3.Y
         ZIndex: =9
 
-    SearchIcon1 As icon.Search:
-        Height: =Self.Width
-        Icon: =Icon.Search
-        PaddingBottom: =9
-        PaddingLeft: =9
-        PaddingRight: =9
-        PaddingTop: =9
-        Tooltip: ="검색"
-        Visible: =!_showDetails
-        Width: =TextSearchBox1.Height
-        X: =TextSearchBox1.X
-        Y: =TextSearchBox1.Y
+    WeekdayGallery3 As gallery.WeekdayGallery:
+        AccessibleLabel: ="요일"
+        Height: =45
+        Items: =Calendar.WeekdaysShort()
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =60
+        Visible: =_calendarVisible
+        Width: =420
+        Y: =LblMonthSelected3.Y + LblMonthSelected3.Height + 10
         ZIndex: =10
 
-    AddIcon1 As icon.Add:
-        Height: =TextSearchBox1.Height
-        Icon: =Icon.Add
-        OnSelect: |-
-            =Collect(MyPeople, {DisplayName: TextSearchBox1.Text, UserPrincipalName: TextSearchBox1.Text});
-            Concurrent(
-            Reset(TextSearchBox1),
-            Set(_showMeetingTimes, false),
-            UpdateContext({_loadMeetingTimes: true}),
-            Set(_selectedMeetingTime, Blank()),
-            Set(_selectedRoom, Blank()),
-            Set(_roomListSelected, false),
-            /*
-            Uses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,
-            a meeting duration (in minutes), an acceptable start and end range to find the meeting.
-            Attendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.
-            */
-            ClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(
-            	{RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,
-            	Start:Text(DateAdd(MeetingDateSelect1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1.SelectedDate, 17, Hours), UTC),
-            	MaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: "Work"}).MeetingTimeSuggestions,
-            "StartTime", MeetingTimeSlot.Start.DateTime, "EndTime", MeetingTimeSlot.End.DateTime))
-            );
-            UpdateContext({_loadingMeetingTimes: false});
-            Set(_showMeetingTimes, true)
-        PaddingBottom: =5
-        PaddingLeft: =5
-        PaddingRight: =5
-        PaddingTop: =5
-        TabIndex: =0
-        Tooltip: ="컬렉션에 사용자를 추가하려면 선택"
-        Visible: |-
-            =!IsBlank(TextSearchBox1.Text) && 
-                       
-            /*Is user entry a valid email address*/
-            IsMatch(TextSearchBox1.Text, Match.Email) &&
-                       
-            Not(Trim(TextSearchBox1.Text) in MyPeople.UserPrincipalName) &&!_showDetails
-        X: =TextSearchBox1.X + TextSearchBox1.Width - Self.Width
-        Y: =TextSearchBox1.Y
+        Title3 As label:
+            Align: =Align.Center
+            Height: =WeekdayGallery3.TemplateHeight
+            OnSelect: =Select(Parent)
+            Size: =17 * WeekdayGallery3.TemplateWidth / 77
+            Text: =ThisItem.Value
+            VerticalAlign: =Middle
+            Width: =WeekdayGallery3.TemplateWidth
+            Wrap: =false
+            X: =WeekdayGallery3.TemplateWidth / 2 - Self.Width / 2
+            Y: =WeekdayGallery3.TemplateHeight / 2 - Self.Height / 2
+            ZIndex: =1
+
+    MonthDayGallery3 As gallery.MonthDayGallery:
+        AccessibleLabel: ="선택한 달의 날짜"
+        Height: =425
+        Items: =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =60
+        Visible: =_calendarVisible
+        Width: =420
+        WrapCount: =7
+        Y: =WeekdayGallery3.Y + WeekdayGallery3.Height
         ZIndex: =11
 
-    MeetingPeopleGallery1 As gallery.SelectedUsersGalleryMeetingVariant:
-        AccessibleLabel: ="모임에 추가된 참석자입니다. 한 명의 이상의 참석자를 추가해야 합니다."
-        Height: =Min(58 * RoundUp(CountRows(Self.AllItems) / 4, 0), 114)
-        Items: =MyPeople
-        Layout: =Layout.Vertical
-        ShowScrollbar: =Self.Height >= 114
-        TemplatePadding: =8
-        TemplateSize: =42
-        Visible: =!_showDetails
-        Width: =Parent.Width - Self.X * 2
-        WrapCount: =4
-        X: =32
-        Y: =TextSearchBox1.Y + TextSearchBox1.Height
-        ZIndex: =12
-
-        Separator1 As rectangle:
-            Height: =Parent.TemplateHeight
+        Circle3 As circle:
+            Height: =Self.Width
             OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
+            Visible: |-
+                =/*Visible if calendar events are found on this day*/               
+                CountRows(Filter(MyCalendarEvents, DateValue(Text(Start)) = DateAdd(_firstDayInView,ThisItem.Value,Days))) > 0 && !Subcircle3.Visible && Title4.Visible
+            Width: =6.5
+            X: =MonthDayGallery3.TemplateWidth / 2 - Self.Width / 2
+            Y: =MonthDayGallery3.TemplateHeight * (0.75)
             ZIndex: =1
 
-        Title3 As label:
-            FocusedBorderThickness: =2
-            Height: =MeetingPeopleGallery1.TemplateHeight
-            OnSelect: =Set(_selectedUser, ThisItem)
-            PaddingLeft: =10
-            Size: =18 * MeetingPeopleGallery1.TemplateHeight / 60
-            TabIndex: =If(PeopleBrowseGallery1.Visible, -1, 0)
-            Text: =ThisItem.DisplayName
-            VerticalAlign: =Middle
-            Width: =MeetingPeopleGallery1.TemplateWidth - iconRemove1.Width + 10
-            Wrap: =false
-            ZIndex: =2
-
-        iconRemove1 As icon.Cancel:
-            BorderColor: =Self.Color
-            Color: =Title3.Color
-            Height: =MeetingPeopleGallery1.TemplateHeight
-            Icon: =Icon.Cancel
-            OnSelect: |-
-                =Remove(MyPeople, LookUp(MyPeople, UserPrincipalName = ThisItem.UserPrincipalName));Concurrent(
-                Reset(TextSearchBox1),
-                Set(_showMeetingTimes, false),
-                UpdateContext({_loadMeetingTimes: true}),
-                Set(_selectedMeetingTime, Blank()),
-                Set(_selectedRoom, Blank()),
-                Set(_roomListSelected, false),
-                /*
-                Uses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,
-                a meeting duration (in minutes), an acceptable start and end range to find the meeting.
-                Attendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.
-                */
-                ClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(
-                	{RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,
-                	Start:Text(DateAdd(MeetingDateSelect1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1.SelectedDate, 17, Hours), UTC),
-                	MaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: "Work"}).MeetingTimeSuggestions,
-                "StartTime", MeetingTimeSlot.Start.DateTime, "EndTime", MeetingTimeSlot.End.DateTime))
-                );
-                UpdateContext({_loadingMeetingTimes: false});
-                Set(_showMeetingTimes, true)
-            PaddingBottom: =17 * MeetingPeopleGallery1.TemplateHeight / 60
-            PaddingLeft: =17 * MeetingPeopleGallery1.TemplateHeight / 60
-            PaddingRight: =17 * MeetingPeopleGallery1.TemplateHeight / 60
-            PaddingTop: =17 * MeetingPeopleGallery1.TemplateHeight / 60
-            TabIndex: =If(PeopleBrowseGallery1.Visible, -1, 0)
-            Tooltip: ="컬렉션에서 사용자를 제거하려면 선택"
+        Subcircle3 As circle:
+            Height: =3 * Title4.Size
+            OnSelect: =Select(Parent)
+            Visible: =And(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, Title4.Visible)
             Width: =Self.Height
-            X: =MeetingPeopleGallery1.TemplateWidth - Self.Width
-            ZIndex: =3
-
-    LblMeetingSubject1 As label:
-        Height: =25
-        Size: =13
-        Text: ="*제목"
-        Visible: =!_showDetails
-        Width: =120
-        Wrap: =false
-        X: =32
-        Y: =MeetingPeopleGallery1.Y + MeetingPeopleGallery1.Height + 16
-        ZIndex: =13
-
-    TextMeetingSubject1 As text:
-        AccessibleLabel: ="제목 추가"
-        Default: =""
-        HintText: ="제목 추가"
-        PaddingLeft: =5
-        TabIndex: =If(PeopleBrowseGallery1.Visible, -1, 0)
-        Visible: =!_showDetails
-        Width: =Parent.Width - Self.X * 2
-        X: =32
-        Y: =LblMeetingSubject1.Y + LblMeetingSubject1.Height + 6
-        ZIndex: =14
-
-    LblMeetingMessage1 As label:
-        Height: =25
-        Size: =13
-        Text: ="메시지"
-        Visible: =!_showDetails
-        Width: =200
-        Wrap: =false
-        X: =32
-        Y: =TextMeetingSubject1.Y + TextMeetingSubject1.Height + 16
-        ZIndex: =15
-
-    TextMeetingMessage1 As text:
-        AccessibleLabel: ="메시지 추가"
-        Default: =""
-        Height: =238
-        HintText: ="메시지 추가"
-        Mode: =TextMode.MultiLine
-        PaddingLeft: =5
-        TabIndex: =If(PeopleBrowseGallery1.Visible, -1, 0)
-        Visible: =!_showDetails
-        Width: =Parent.Width - Self.X * 2
-        X: =32
-        Y: =LblMeetingMessage1.Y + LblMeetingMessage1.Height + 6
-        ZIndex: =16
-
-    LblMeetingDate1 As label:
-        Height: =25
-        Size: =13
-        Text: ="*날짜"
-        Visible: =_showDetails
-        Width: =Parent.Width / 2 - 55.5
-        Wrap: =false
-        X: =32
-        Y: =RectHeaderSep1.Y + RectHeaderSep1.Height + 16
-        ZIndex: =17
-
-    MeetingDateSelect1 As datepicker:
-        AccessibleLabel: =Self.Tooltip
-        DisplayMode: =If(IsEmpty(MyPeople), DisplayMode.Disabled, DisplayMode.Edit)
-        OnChange: =Select(Self)
-        OnSelect: |-
-            =Concurrent(
-            Reset(TextSearchBox1),
-            Set(_showMeetingTimes, false),
-            UpdateContext({_loadingMeetingTimes: true}),
-            Set(_selectedMeetingTime, Blank()),
-            Set(_selectedRoom, Blank()),
-            Set(_roomListSelected, false),
-            /*
-            Uses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,
-            a meeting duration (in minutes), an acceptable start and end range to find the meeting.
-            Attendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.
-            */
-            ClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(
-            	{RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,
-            	Start:Text(DateAdd(MeetingDateSelect1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1.SelectedDate, 17, Hours), UTC),
-            	MaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: "Work"}).MeetingTimeSuggestions,
-            "StartTime", MeetingTimeSlot.Start.DateTime, "EndTime", MeetingTimeSlot.End.DateTime))
-            );
-            UpdateContext({_loadingMeetingTimes: false});
-            Set(_showMeetingTimes, true)
-        Tooltip: ="모임 날짜를 선택하세요. 제출에 필요합니다."
-        Visible: =_showDetails
-        Width: =Parent.Width / 2 - 55.5
-        X: =32
-        Y: =LblMeetingDate1.Y + LblMeetingDate1.Height + 3
-        ZIndex: =18
-
-    LblMeetingTime1 As label:
-        Height: =25
-        Size: =13
-        Text: ="*기간"
-        Visible: =_showDetails
-        Width: =Parent.Width / 2 - 55.5
-        Wrap: =false
-        X: =LblMeetingDate1.X + LblMeetingDate1.Width + 18.5
-        Y: =RectHeaderSep1.Y + RectHeaderSep1.Height + 16
-        ZIndex: =19
-
-    MeetingDurationSelect1 As dropdown:
-        AccessibleLabel: =Self.Tooltip
-        DisplayMode: =If(IsEmpty(MyPeople), DisplayMode.Disabled, DisplayMode.Edit)
-        Items: |-
-            =Table(             
-            {Name:Substitute("{0} 시간", "{0}", "0.5"), Minutes:30},             
-            {Name:Substitute("{0} 시간", "{0}", "1"), Minutes:60},             
-            {Name:Substitute("{0} 시간", "{0}", "1.5"), Minutes:90},             
-            {Name:Substitute("{0} 시간", "{0}", "2"), Minutes:120},             
-            {Name:Substitute("{0} 시간", "{0}", "2.5"), Minutes:150},             
-            {Name:Substitute("{0} 시간", "{0}", "3"), Minutes:180},             
-            {Name:Substitute("{0} 시간", "{0}", "3.5"), Minutes:210},             
-            {Name:Substitute("{0} 시간", "{0}", "4"), Minutes:240})
-        OnChange: =Select(MeetingDateSelect1)
-        Tooltip: ="모임 기간을 선택하세요. 제출에 필요합니다."
-        Visible: =_showDetails
-        Width: =Parent.Width / 2 - 55.5
-        X: =LblMeetingTime1.X
-        Y: =LblMeetingTime1.Y + LblMeetingTime1.Height + 3
-        ZIndex: =20
-
-    RectTimeSep1 As rectangle:
-        Height: =41
-        Visible: =_showDetails
-        Width: =Parent.Width
-        Y: =MeetingDurationSelect1.Y + MeetingDurationSelect1.Height + 16
-        ZIndex: =21
-
-    LblTimeHeader1 As label:
-        Height: =RectTimeSep1.Height
-        PaddingLeft: =0
-        Size: =12
-        Text: ="시간"
-        Visible: =_showDetails
-        Width: =Parent.Width - 37
-        Wrap: =false
-        X: =32
-        Y: =RectTimeSep1.Y
-        ZIndex: =22
-
-    iconTimesEmptyState1 As icon.Clock:
-        DisplayMode: ="DisplayMode.View"
-        Height: =42
-        Icon: =Icon.Clock
-        Visible: =( !_showMeetingTimes || CountRows(MeetingTimes) = 0 || IsEmpty(MyPeople) ) && _showDetails
-        Width: =42
-        X: =Parent.Width/2 - Self.Width/2
-        Y: =FindMeetingTimesGallery1.Y + 58
-        ZIndex: =23
-
-    LblTimesEmptyState1 As label:
-        Align: =Align.Center
-        Height: =60
-        Size: =13
-        Text: =If(_loadingMeetingTimes, "열려 있는 모임 시간을 검색하는 중...", !_showMeetingTimes || IsEmpty(MyPeople), "사용 가능한 시간을 보려면 선택", CountRows(MeetingTimes) = 0, "선택한 날짜에 사용 가능한 시간 없음")
-        Visible: =( !_showMeetingTimes || CountRows(MeetingTimes) = 0 || IsEmpty(MyPeople) ) && _showDetails
-        Width: =645
-        X: =Parent.Width/2 - Self.Width / 2
-        Y: =iconTimesEmptyState1.Y + iconTimesEmptyState1.Height + 39
-        ZIndex: =24
-
-    FindMeetingTimesGallery1 As gallery.MeetingTimesGallery:
-        AccessibleLabel: ="가능한 참석자의 비율에 따라 정렬된 사용 가능한 시간 슬롯입니다. 모임 요청을 보내려면 사용자는 시간 슬롯을 선택해야 합니다. 제출하려면 시간 슬롯을 선택해야 합니다."
-        Height: =205
-        Items: =MeetingTimes
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =71
-        Visible: =_showMeetingTimes && _showDetails && !IsEmpty(MyPeople)
-        Width: =Parent.Width
-        Y: =LblTimeHeader1.Y + LblTimeHeader1.Height
-        ZIndex: =25
-
-        Separator2 As rectangle:
-            Height: =2
-            OnSelect: =Select(Parent)
-            Width: =FindMeetingTimesGallery1.TemplateWidth
-            Y: =69
-            ZIndex: =1
-
-        Rectangle1 As rectangle:
-            BorderColor: =Title4.Color
-            BorderThickness: =If(ThisItem.StartTime = _selectedMeetingTime.StartTime, 4, 0)
-            Fill: =RGBA(0,0,0,0)
-            Height: =Parent.TemplateHeight - 4
-            HoverFill: =RGBA(0,0,0,0)
-            OnSelect: =Select(Title4)
-            Width: =Parent.TemplateWidth - 4
-            X: =2
-            Y: =2
+            X: =MonthDayGallery3.TemplateWidth/2 - Self.Width/2
+            Y: =MonthDayGallery3.TemplateHeight / 2 - Self.Height / 2
             ZIndex: =2
 
         Title4 As label:
-            BorderColor: =Self.Color
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =If(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(255, 255, 255, 1), DateAdd(_firstDayInView, ThisItem.Value) = Today(), RGBA(47, 41, 43, 1), LblMonthSelected3.Color)
+            Fill: |-
+                =/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
+                If(
+                    /*Date selected is today*/
+                    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),
+                    /*Today when it is not selected*/
+                    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle3.Fill, 0.67), 
+                    /*The day is outside the range of the currently selected month*/
+                    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+            FocusedBorderColor: =Self.Color
             FocusedBorderThickness: =2
-            FontWeight: =FontWeight.Semibold
-            Height: =35
-            OnSelect: |-
-                =Set(_selectedMeetingTime, ThisItem);
-                UpdateContext({_loadingRooms: true});
-                /*Collects user's tenant room lists (if any)*/
-                If(IsEmpty(RoomsLists),
-                 ClearCollect(RoomsLists, Office365Outlook.GetRoomLists().value));
-                /*If tenant has no room lists, retrieves all the tenant rooms, and then retrieves their availabilities for the selected meeting time*/
-                If(CountRows(RoomsLists) <= 1,
-                 Set(_noRoomLists, true);
-                 ClearCollect(AllRooms, Office365Outlook.GetRooms().value);
-                 Set(_allRoomsConcat, Concat(FirstN(AllRooms, 20), Address & ";"));
-                 ClearCollect(RoomTimeSuggestions, Office365Outlook.FindMeetingTimes({RequiredAttendees: _allRoomsConcat, MeetingDuration: MeetingDurationSelect1.Selected.Minutes,
-                   Start: _selectedMeetingTime.StartTime & "Z", End: _selectedMeetingTime.EndTime & "Z", MinimumAttendeePercentage: "1",
-                   IsOrganizerOptional: "false", ActivityDomain: "Unrestricted"}).MeetingTimeSuggestions);
-                 ClearCollect(AvailableRooms, AddColumns(AddColumns(Filter(First(RoomTimeSuggestions).AttendeeAvailability,
-                   Availability="Free"), "Address", Attendee.EmailAddress.Address), "Name", LookUp(AllRooms, Address = Attendee.EmailAddress.Address).Name));
-                 ClearCollect(AvailableRoomsOptimal, DropColumns(DropColumns(AvailableRooms, "Availability"), "Attendee")),
-                 Set(_roomListSelected, false));
-                UpdateContext({_loadingRooms: false})
-            Size: =18 * FindMeetingTimesGallery1.TemplateHeight / 104
+            Height: =MonthDayGallery3.TemplateHeight
+            OnSelect: =Set(_dateSelected, DateAdd(_firstDayInView, ThisItem.Value, Days))
+            Size: =17 * MonthDayGallery3.TemplateWidth / 91
             TabIndex: =0
-            Text: =Text(DateAdd(DateTimeValue(ThisItem.StartTime), -TimeZoneOffset(), Minutes), DateTimeFormat.ShortTime)
-            Width: =160
+            Text: =Day(DateAdd(_firstDayInView,ThisItem.Value,Days))
+            VerticalAlign: =Middle
+            Visible: |-
+                =/*This item is in a row containing no days of the visible month. It is in the row after the row where the last day of the month occurs*/ 
+                 !(DateAdd(_firstDayInView,ThisItem.Value,Days) - Weekday(DateAdd(_firstDayInView,ThisItem.Value,Days)) + 1 > _lastDayOfMonth)
+            Width: =MonthDayGallery3.TemplateWidth
             Wrap: =false
-            X: =37
-            Y: =5
             ZIndex: =3
 
-        Subtitle1 As label:
-            Color: =ColorFade(Title4.Color, 0.20)
-            FocusedBorderThickness: =2
-            Height: =FindMeetingTimesGallery1.TemplateHeight - Self.Y - 5
-            OnSelect: =Select(Title4)
-            Size: =18 * FindMeetingTimesGallery1.TemplateHeight / 104
-            Text: |-
-                =If(ThisItem.Confidence = 100, "가능한 모든 참석자", "참석할 수 없음: "               
-                 & Concat(Filter(ThisItem.AttendeeAvailability, Availability = "Busy" || Availability = "Oof"),               
-                   LookUp(MyPeople, UserPrincipalName = Attendee.EmailAddress.Address || Mail = Attendee.EmailAddress.Address).DisplayName, ", "))
-            VerticalAlign: =VerticalAlign.Bottom
-            Width: =FindMeetingTimesGallery1.TemplateWidth - Self.X - 10
-            X: =37
-            Y: =Title4.Y + Title4.Height + 2
-            ZIndex: =4
-
-    RectLocationSep1 As rectangle:
-        Height: =41
-        Visible: =_showDetails
-        Width: =Parent.Width
-        Y: =FindMeetingTimesGallery1.Y + FindMeetingTimesGallery1.Height
-        ZIndex: =26
-
-    LblLocationHeader1 As label:
-        Height: =RectTimeSep1.Height
-        PaddingLeft: =0
-        Size: =12
-        Text: ="위치"
-        Visible: =_showDetails
-        Width: =Parent.Width - Self.X
-        Wrap: =false
-        X: =32
-        Y: =RectLocationSep1.Y
-        ZIndex: =27
-
-    TextMeetingLocation1 As text:
-        AccessibleLabel: ="위치 추가"
-        Align: =Left
-        Default: =""
-        HintText: ="위치 추가"
-        PaddingLeft: =40
-        Visible: =_showDetails
-        Width: =Parent.Width
-        Y: =LblLocationHeader1.Y + LblLocationHeader1.Height
-        ZIndex: =28
-
-    RoomSearchIcon1 As icon.Search:
-        Color: =RGBA(191, 190, 190, 1)
-        Height: =Self.Width
-        Icon: =Icon.Search
-        PaddingBottom: =10
-        PaddingLeft: =10
-        PaddingRight: =10
-        PaddingTop: =10
-        Tooltip: ="검색"
-        Visible: =_showDetails
-        Width: =TextMeetingLocation1.Height
-        X: =TextMeetingLocation1.X
-        Y: =TextMeetingLocation1.Y
-        ZIndex: =29
-
-    RectSeparator1 As rectangle:
-        Height: =2
-        Visible: =_showDetails
-        Width: =Parent.Width
-        Y: =TextMeetingLocation1.Y + TextMeetingLocation1.Height
-        ZIndex: =30
-
-    LblRoomListName1 As label:
-        FontWeight: =FontWeight.Semibold
-        Height: =45
-        PaddingLeft: =56
+    LblDateSelected3 As label:
+        Height: =RectMeetingBkg3.Height
         Size: =13
-        Text: =_selectedRoomList
-        Visible: =_showDetails && _roomListSelected
-        Width: =Parent.Width - Self.X
+        Text: =Text(_dateSelected, DateTimeFormat.LongDate)
+        Visible: =_calendarVisible
+        Width: =Parent.Width / 3 - 60
         Wrap: =false
-        Y: =TextMeetingLocation1.Y + TextMeetingLocation1.Height
-        ZIndex: =31
+        X: =451
+        Y: =RectQuickActionBar2.Height
+        ZIndex: =12
 
-    RoomsBackNav1 As icon.ChevronLeft:
-        Height: =45
-        Icon: =Icon.ChevronLeft
-        OnSelect: =Set(_roomListSelected, false)
-        PaddingBottom: =9
-        PaddingLeft: =9
-        PaddingRight: =9
-        PaddingTop: =9
-        TabIndex: =0
-        Tooltip: ="이전 목록으로 돌아가기"
-        Visible: =_roomListSelected && _showDetails
-        Width: =45
-        Y: =LblRoomListName1.Y
-        ZIndex: =32
-
-    iconRoomsEmptyState1 As icon.Waypoint:
-        DisplayMode: ="DisplayMode.View"
-        Height: =50
-        Icon: =Icon.Waypoint
-        Visible: =Or(_showDetails && Or(IsBlank(_selectedMeetingTime), _loadingRooms), CountRows(AvailableRoomsOptimal) = 0 && Or(_noRoomLists, _roomListSelected))
-        Width: =50
-        X: =Parent.Width/2 - Self.Width/2
-        Y: =RoomBrowseGallery1.Y + 25
-        ZIndex: =33
-
-    LblRoomsEmptyState1 As label:
-        Align: =Align.Center
-        Height: =60
-        Size: =13
-        Text: =If(_loadingRooms, "사용 가능한 회의실을 수집하는 중...", IsBlank(_selectedMeetingTime), "사용 가능한 위치를 보려면 시간 선택", CountRows(AvailableRoomsOptimal) = 0, "해당 시간에 사용할 수 있는 회의실이 없습니다.")
-        Visible: =Or(_showDetails && Or(IsBlank(_selectedMeetingTime), _loadingRooms), CountRows(AvailableRoomsOptimal) = 0 && Or(_noRoomLists, _roomListSelected))
-        Width: =645
-        X: =Parent.Width/2 - Self.Width / 2
-        Y: =iconRoomsEmptyState1.Y + iconRoomsEmptyState1.Height + 30
-        ZIndex: =34
-
-    RoomBrowseGallery1 As gallery.RoomsListVariant:
+    CalendarEventsGallery2 As gallery.CalendarEventsGallery:
+        AccessibleLabel: ="선택한 날짜에 대한 일정 이벤트"
         Height: =Parent.Height - Self.Y
-        Items: =Search(If(_roomListSelected || _noRoomLists, AvailableRoomsOptimal, RoomsLists), Trim(TextMeetingLocation1.Text), "Name", "Address")
+        Items: |-
+            =/*Shows events only on selected date*/
+            SortByColumns(Filter(MyCalendarEvents, Text(Start, DateTimeFormat.ShortDate) = Text(_dateSelected, DateTimeFormat.ShortDate)), "Start")
         Layout: =Layout.Vertical
+        ShowScrollbar: =false
         TemplatePadding: =0
-        TemplateSize: =71
-        Visible: =_showDetails && !IsBlank(_selectedMeetingTime) && !_loadingRooms
-        Width: =Parent.Width
-        Y: =If(_roomListSelected, LblRoomListName1.Y + LblRoomListName1.Height, RectSeparator1.Y + RectSeparator1.Height)
-        ZIndex: =35
+        TemplateSize: =85
+        Visible: =_calendarVisible
+        Width: =Parent.Width - Self.X
+        X: =422
+        Y: =LblDateSelected3.Y + LblDateSelected3.Height
+        ZIndex: =13
 
-        Rectangle2 As rectangle:
-            BorderColor: =Title5.Color
-            BorderThickness: =If(ThisItem.Address = _selectedRoom.Address, 4, 0)
+        Rectangle1 As rectangle:
+            BorderThickness: =If(ThisItem.Id = _selectedCalendarEvent.Id, 2, 0)
             Fill: =RGBA(0,0,0,0)
-            Height: =Parent.TemplateHeight - 4
+            Height: =Parent.TemplateHeight
             HoverFill: =RGBA(0,0,0,0)
             OnSelect: =Select(Title5)
-            Width: =Parent.TemplateWidth - 4
-            X: =2
-            Y: =2
+            TabIndex: =0
+            Width: =Parent.TemplateWidth
             ZIndex: =1
+
+        iconLocation2 As icon.Waypoint:
+            Height: =Subtitle1.Height
+            Icon: =Icon.Waypoint
+            OnSelect: =Select(Title5)
+            TabIndex: =0
+            Width: =28
+            X: =Title5.X
+            Y: =Subtitle1.Y
+            ZIndex: =2
 
         Title5 As label:
             BorderColor: =Self.Color
             FocusedBorderThickness: =2
-            FontWeight: =If(!_roomListSelected, FontWeight.Semibold, FontWeight.Normal)
-            OnSelect: |-
-                =/*If user is viewing room lists, then retrieves the availabilities for the rooms within that list during the selected meeting time
-                If user is viewing rooms, selects that room*/               
-                UpdateContext({_loadingRooms: true});                   
-                If(!_roomListSelected && !_noRoomLists,                   
-                 Set(_roomListSelected, true);                   
-                 Set(_selectedRoomList, ThisItem.Name);                   
-                 ClearCollect(AllRooms, Office365Outlook.GetRoomsInRoomList(ThisItem.Address).value);                   
-                 Set(_allRoomsConcat, Concat(FirstN(AllRooms, 20), Address & ";"));                   
-                 ClearCollect(RoomTimeSuggestions, Office365Outlook.FindMeetingTimes({RequiredAttendees: _allRoomsConcat, MeetingDuration: MeetingDurationSelect1.Selected.Minutes,                   
-                   Start: _selectedMeetingTime.StartTime & "Z", End: _selectedMeetingTime.EndTime & "Z", MinimumAttendeePercentage: "1",                   
-                   IsOrganizerOptional: "false", ActivityDomain: "Unrestricted"}).MeetingTimeSuggestions);                   
-                 ClearCollect(AvailableRooms, AddColumns(AddColumns(Filter(First(RoomTimeSuggestions).AttendeeAvailability, Availability = "Free"),                   
-                   "Address", Attendee.EmailAddress.Address), "Name", LookUp(AllRooms, Address = Attendee.EmailAddress.Address).Name));                   
-                 ClearCollect(AvailableRoomsOptimal, DropColumns(DropColumns(AvailableRooms, "Availability"), "Attendee")),                   
-                 Set(_selectedRoom, ThisItem)                   
-                );                   
-                UpdateContext({_loadingRooms: false})
-            Size: =18 * RoomBrowseGallery1.TemplateHeight / 104
+            FontWeight: =FontWeight.Semibold
+            Height: =Self.Size * 1.8
+            OnSelect: =Set(_selectedCalendarEvent, ThisItem)
+            Size: =19 * CalendarEventsGallery2.TemplateHeight / 105
             TabIndex: =0
-            Text: =ThisItem.Name
-            Width: =RoomBrowseGallery1.TemplateWidth - Self.X * 2 - 50
+            Text: =ThisItem.Subject
+            Tooltip: =ThisItem.Subject
+            VerticalAlign: =Middle
+            Width: =CalendarEventsGallery2.TemplateWidth - Self.X - 10
             Wrap: =false
-            X: =37
-            Y: =RoomBrowseGallery1.TemplateHeight / 2 - Self.Height / 2
-            ZIndex: =2
-
-        iconAdd1 As icon.ChevronRight:
-            Height: =Self.Width
-            Icon: =Icon.ChevronRight
-            OnSelect: =Select(Title5)
-            PaddingBottom: =5
-            PaddingLeft: =5
-            PaddingRight: =5
-            PaddingTop: =5
-            Visible: =!_roomListSelected && !_noRoomLists
-            Width: =64 * RoomBrowseGallery1.TemplateHeight / 150
-            X: =RoomBrowseGallery1.TemplateWidth - Self.Width - 10
-            Y: =RoomBrowseGallery1.TemplateHeight / 2 - Self.Height / 2
+            X: =Body2.X + Body2.Width + 10
+            Y: =CalendarEventsGallery2.TemplateHeight / 4 - Self.Height / 2 + 5
             ZIndex: =3
 
-        Separator3 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =RoomBrowseGallery1.TemplateWidth
-            Y: =RoomBrowseGallery1.TemplateHeight - Self.Height
+        Subtitle1 As label:
+            FocusedBorderThickness: =2
+            FontWeight: =FontWeight.Lighter
+            Height: =Self.Size * 2
+            OnSelect: =Select(Title5)
+            PaddingBottom: =0
+            Size: =18 * CalendarEventsGallery2.TemplateHeight / 105
+            Text: =ThisItem.Location
+            Tooltip: =ThisItem.Location
+            VerticalAlign: =Middle
+            Width: =CalendarEventsGallery2.TemplateWidth - Self.X - 10
+            Wrap: =false
+            X: =iconLocation2.X + iconLocation2.Width + 10
+            Y: =3 / 4 * CalendarEventsGallery2.TemplateHeight - Self.Height / 2 - 5
             ZIndex: =4
 
-    PeopleBrowseGallery1 As gallery.PeoplePickerGallerySmallMeetingVariant:
-        AccessibleLabel: ="사용자 찾기 검색 결과"
-        BorderThickness: =If(Len(Trim(TextSearchBox1.Text)) > 0, 2, 0)
-        Fill: =TextSearchBox1.Fill
-        Height: =If(Len(Trim(TextSearchBox1.Text)) > 0, Parent.Height - Self.Y - 10, 0)
-        Items: |-
-            =If(!IsBlank(Trim(TextSearchBox1.Text)), 'Office365사용자'.SearchUser({searchTerm: Trim(TextSearchBox1.Text), top: 15}))
-        Layout: =Layout.Vertical
-        TemplatePadding: =0
-        TemplateSize: =71
-        Visible: =!_showDetails && Len(Trim(TextSearchBox1.Text)) > 0
-        Width: =Parent.Width - Self.X * 2
-        X: =32
-        Y: =TextSearchBox1.Y + TextSearchBox1.Height
-        ZIndex: =36
-
-        Rectangle3 As rectangle:
-            BorderColor: =Title6.Color
-            BorderThickness: =If(ThisItem.UserPrincipalName in MyPeople.UserPrincipalName, 4, 0)
-            Fill: =RGBA(0,0,0,0)
-            Height: =Parent.TemplateHeight
-            HoverFill: =RGBA(0,0,0,0)
-            OnSelect: =Select(Title6)
-            Width: =Parent.TemplateWidth
-            ZIndex: =1
-
-        Title6 As label:
-            BorderColor: =Self.Color
+        Body2 As label:
             FocusedBorderThickness: =2
-            FontWeight: =FontWeight.Semibold
-            Height: =PeopleBrowseGallery1.TemplateHeight * 0.35
-            OnSelect: |-
-                =Concurrent(
-                Reset(TextSearchBox1),
-                Set(_selectedUser, ThisItem),
-                If(Not(ThisItem.UserPrincipalName in MyPeople.UserPrincipalName), 
-                	Collect(MyPeople, ThisItem); 
-                	Concurrent(
-                	Set(_showMeetingTimes, false),
-                	UpdateContext({_loadMeetingTimes: true}),
-                	Set(_selectedMeetingTime, Blank()),
-                	Set(_selectedRoom, Blank()),
-                	Set(_roomListSelected, false),
-                /*
-                Uses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,
-                a meeting duration (in minutes), an acceptable start and end range to find the meeting.
-                Attendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.
-                */
-                	ClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(
-                		{RequiredAttendees:Concat(MyPeople, UserPrincipalName & ";"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,
-                		Start:Text(DateAdd(MeetingDateSelect1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1.SelectedDate, 17, Hours), UTC),
-                		MaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: "Work"}).MeetingTimeSuggestions,
-                	"StartTime", MeetingTimeSlot.Start.DateTime, "EndTime", MeetingTimeSlot.End.DateTime))
-                	);
-                UpdateContext({_loadingMeetingTimes: false});
-                Set(_showMeetingTimes, true)
-                ))
-            Size: =21 * PeopleBrowseGallery1.TemplateHeight / 104
-            TabIndex: =0
-            Text: =ThisItem.DisplayName
+            Height: =Title5.Height
+            OnSelect: =Select(Title5)
+            Size: =17 * CalendarEventsGallery2.TemplateHeight / 105
+            Text: =Text(ThisItem.Start, DateTimeFormat.ShortTime)
             VerticalAlign: =Middle
-            Width: =PeopleBrowseGallery1.TemplateWidth - Self.X - 20
+            Width: =110
             Wrap: =false
-            X: =16
-            Y: =0.1 * PeopleBrowseGallery1.TemplateHeight
-            ZIndex: =2
+            X: =32
+            Y: =Title5.Y
+            ZIndex: =5
 
-        Subtitle2 As label:
-            Color: =ColorFade(Title6.Color, 0.20)
+        Description2 As label:
             FocusedBorderThickness: =2
-            Height: =PeopleBrowseGallery1.TemplateHeight * 0.35
-            OnSelect: =Select(Title6)
-            Size: =18 * PeopleBrowseGallery1.TemplateHeight / 104
-            Text: =ThisItem.UserPrincipalName
+            Height: =Subtitle1.Height
+            OnSelect: =Select(Title5)
+            Size: =17 * CalendarEventsGallery2.TemplateHeight / 105
+            Text: =DateDiff(ThisItem.Start, ThisItem.End, Minutes) & Lower(Left("Minute_Name", 1))
             VerticalAlign: =Middle
-            Width: =Title6.Width
+            Width: =100
             Wrap: =false
-            X: =Title6.X
-            Y: =0.9 * PeopleBrowseGallery1.TemplateHeight - Self.Height
-            ZIndex: =3
+            X: =32
+            Y: =Subtitle1.Y
+            ZIndex: =6
 
-        Separator4 As rectangle:
+        Separator1 As rectangle:
             Height: =1
             OnSelect: =Select(Parent)
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
-            ZIndex: =4
+            ZIndex: =7
+
+    iconEmptyState2 As icon.CalendarBlank:
+        DisplayMode: =DisplayMode.View
+        Icon: =Icon.CalendarBlank
+        Visible: =IsBlank(_userDomain)
+        X: =2* Parent.Width/3 - Self.Width / 2
+        Y: =LblNoEvents3.Y - Self.Height
+        ZIndex: =14
+
+    LblNoEvents3 As label:
+        Align: =Align.Center
+        DisplayMode: =DisplayMode.View
+        Height: =220
+        Size: =15
+        Text: =If(IsBlank(_userDomain), "시작하려면 드롭다운에서 일정 선택", _showLoading, "이벤트를 로드하는 중...", "예약된 이벤트 없음")
+        Visible: =IsBlank(_userDomain) || _showLoading || And(CountRows(CalendarEventsGallery2.AllItems) = 0 && _calendarVisible)
+        Width: =600
+        X: =2* Parent.Width/3 - Self.Width / 2
+        Y: =CalendarEventsGallery2.Y + CalendarEventsGallery2.Height/2 - Self.Height/2
+        ZIndex: =15
+
+    RectCalendarSeparator3 As rectangle:
+        Height: =Parent.Height - Self.Y
+        Width: =2
+        X: =420
+        Y: =RectQuickActionBar2.Height
+        ZIndex: =16
 

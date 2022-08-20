@@ -1827,7 +1827,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTabletLblNoEvents.ID%",
       "Name": "LblNoEvents1",
-      "ParentIndex": 14,
+      "ParentIndex": 15,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2260,7 +2260,14 @@
         },
         "ZIndex",
         "Size",
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Concurrent(\r\nReset(TextSearchBox1),\r\nSet(_showMeetingTimes, false),\r\nUpdateContext({_loadingMeetingTimes: true}),\r\nSet(_selectedMeetingTime, Blank()),\r\nSet(_selectedRoom, Blank()),\r\nSet(_roomListSelected, false),\r\n/*\r\nUses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,\r\na meeting duration (in minutes), an acceptable start and end range to find the meeting.\r\nAttendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.\r\n*/\r\nClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(\r\n\t{RequiredAttendees:Concat(MyPeople, UserPrincipalName & \";\"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,\r\n\tStart:Text(DateAdd(MeetingDateSelect1_1.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1_1.SelectedDate, 17, Hours), UTC),\r\n\tMaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: \"Work\"}).MeetingTimeSuggestions,\r\n\"StartTime\", MeetingTimeSlot.Start.DateTime, \"EndTime\", MeetingTimeSlot.End.DateTime))\r\n);\r\nUpdateContext({_loadingMeetingTimes: false});\r\nSet(_showMeetingTimes, true)",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "OnChange",
         "Visible",
         "BorderThickness",
@@ -2624,7 +2631,14 @@
         },
         "ZIndex",
         "Size",
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Concurrent(\r\nReset(TextSearchBox1),\r\nSet(_showMeetingTimes, false),\r\nUpdateContext({_loadingMeetingTimes: true}),\r\nSet(_selectedMeetingTime, Blank()),\r\nSet(_selectedRoom, Blank()),\r\nSet(_roomListSelected, false),\r\n/*\r\nUses Office365 Outlook FindMeetingTimes operation to find available meeting times given various parameters including a semicolon separated list of attendee email addresses,\r\na meeting duration (in minutes), an acceptable start and end range to find the meeting.\r\nAttendee emails are retrieved from the MyPeople collection. Duration and Start/End are retrieved from their respective dropdowns, where Start is set to 8:00 AM on the date selected, and End is set to 5:00 PM on the date selected.\r\n*/\r\nClearCollect(MeetingTimes, AddColumns(Office365Outlook.FindMeetingTimes(\r\n\t{RequiredAttendees:Concat(MyPeople, UserPrincipalName & \";\"), MeetingDuration:MeetingDurationSelect1.Selected.Minutes,\r\n\tStart:Text(DateAdd(MeetingDateSelect1_2.SelectedDate, 8, Hours), UTC), End:Text(DateAdd(MeetingDateSelect1_2.SelectedDate, 17, Hours), UTC),\r\n\tMaxCandidates:15, MinimumAttendeePercentage:1, IsOrganizerOptional: false, ActivityDomain: \"Work\"}).MeetingTimeSuggestions,\r\n\"StartTime\", MeetingTimeSlot.Start.DateTime, \"EndTime\", MeetingTimeSlot.End.DateTime))\r\n);\r\nUpdateContext({_loadingMeetingTimes: false});\r\nSet(_showMeetingTimes, true)",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "OnChange",
         "Visible",
         "BorderThickness",
@@ -2954,7 +2968,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%MonthDayGallery.ID%",
       "Name": "MonthDayGallery1",
-      "ParentIndex": 13,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3815,7 +3829,14 @@
         "Overflow",
         "Text",
         "Role",
-        "Color",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(255, 255, 255, 1), DateAdd(_firstDayInView, ThisItem.Value) = Today(), RGBA(47, 41, 43, 1), LblMonthSelected1.Color)",
+          "InvariantPropertyName": "Color",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledColor",
         "PressedColor",
         "HoverColor",
@@ -3825,7 +3846,14 @@
         "HoverBorderColor",
         "BorderStyle",
         "FocusedBorderColor",
-        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             \r\nIf(\r\n    /*Date selected is today*/\r\n    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),\r\n    /*Today when it is not selected*/\r\n    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle1.Fill, 0.67), \r\n    /*The day is outside the range of the currently selected month*/\r\n    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisabledFill",
         "PressedFill",
         "HoverFill",
@@ -4143,7 +4171,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%WeekdayGallery.ID%",
       "Name": "WeekdayGallery1",
-      "ParentIndex": 12,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
