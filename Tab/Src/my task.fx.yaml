@@ -36,3 +36,12 @@
         Y: =6
         ZIndex: =3
 
+    Button5 As button:
+        BorderColor: =RGBA(255,255,255,1)
+        Text: |-
+            ="My Task
+            "
+        X: =1186
+        Y: =14
+        ZIndex: =4
+
