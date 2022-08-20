@@ -1,2 +1,18 @@
 "'my task' As screen.'tabletLayout_Calendar_ver3.0'":
 
+    Button1 As button:
+        BorderColor: |
+            =RGBA(226,226,266,1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledFill: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(219, 219, 219, 1)
+        FontWeight: =FontWeight.Normal
+        Height: =115
+        PressedBorderColor: =RGBA(226,226,226,1)
+        Size: =40
+        Text: ="+ New Task"
+        Width: =570
+        X: =405
+        Y: =594
+        ZIndex: =1
+
