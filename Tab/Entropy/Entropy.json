@@ -7,6 +7,8 @@
     "Button4": 7,
     "Circle1": 65,
     "Circle1_1": 84,
+    "DatePicker1": 89,
+    "DatePicker1_1": 90,
     "dropdownCalendarSelection1": 55,
     "dropdownCalendarSelection1_1": 74,
     "galleryTemplate1": 61,
@@ -58,7 +60,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "08/20/2022 10:27:17",
+  "HeaderLastSavedDateTimeUTC": "08/20/2022 10:28:13",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "1b0554db-ad3c-4994-9da3-24b47e15ef45": "\"/providers/microsoft.powerapps/apis/shared_office365users/connections/1166f95ba8de4e4aa4939009cfa9597d\"",
@@ -88,6 +90,7 @@
   "OrderXMLTemplate": {
     "button": 3,
     "circle": 7,
+    "datepicker": 8,
     "dropdown": 4,
     "gallery": 6,
     "icon": 5,
@@ -101,6 +104,8 @@
     "Button4": 4,
     "Circle1": 42,
     "Circle1_1": 23,
+    "DatePicker1": 0,
+    "DatePicker1_1": 0,
     "dropdownCalendarSelection1": 29,
     "dropdownCalendarSelection1_1": 10,
     "galleryTemplate1": 36,
@@ -161,6 +166,7 @@
     "ControlCount": {
       "button": 3,
       "circle": 4,
+      "datepicker": 2,
       "dropdown": 2,
       "gallery": 4,
       "galleryTemplate": 4,
