@@ -105,8 +105,8 @@
   "ScreenOrder": [
     "Screen1",
     "Screen2",
-    "Screen3",
-    "Screen5",
+    "request task",
+    "main task",
     "Login",
     "Properties"
   ]
