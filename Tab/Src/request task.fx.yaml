@@ -334,3 +334,20 @@
         Y: =713
         ZIndex: =28
 
+    Label6 As label:
+        FontWeight: =FontWeight.Semibold
+        Text: ="• Attached File"
+        Width: =133
+        X: =943
+        Y: =119
+        ZIndex: =29
+
+    Button7 As button:
+        Height: =29
+        Size: =12
+        Text: ="Search File"
+        Width: =151
+        X: =1154
+        Y: =211
+        ZIndex: =30
+
