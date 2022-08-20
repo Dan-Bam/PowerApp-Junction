@@ -16,6 +16,7 @@ firstPage As screen:
         ZIndex: =2
 
     Rectangle2 As rectangle:
+        BorderStyle: =BorderStyle.None
         FocusedBorderColor: =
         Height: =85
         Width: =272
