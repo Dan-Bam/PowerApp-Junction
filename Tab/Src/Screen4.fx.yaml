@@ -1,4 +1,4 @@
-"Screen4 As screen.'tabletLayout_Calendar_ver3.0'":
+"Screen4 As screen.'tabletLayout_Meeting_ver3.0'":
 
     RectMeetingBkg3 As rectangle:
         Height: =42
@@ -146,19 +146,6 @@
         Y: =LblMonthSelected3.Y + LblMonthSelected3.Height + 10
         ZIndex: =10
 
-        Title3 As label:
-            Align: =Align.Center
-            Height: =WeekdayGallery3.TemplateHeight
-            OnSelect: =Select(Parent)
-            Size: =17 * WeekdayGallery3.TemplateWidth / 77
-            Text: =ThisItem.Value
-            VerticalAlign: =Middle
-            Width: =WeekdayGallery3.TemplateWidth
-            Wrap: =false
-            X: =WeekdayGallery3.TemplateWidth / 2 - Self.Width / 2
-            Y: =WeekdayGallery3.TemplateHeight / 2 - Self.Height / 2
-            ZIndex: =1
-
     MonthDayGallery3 As gallery.MonthDayGallery:
         AccessibleLabel: ="선택한 달의 날짜"
         Height: =425
@@ -193,34 +180,6 @@
             Y: =MonthDayGallery3.TemplateHeight / 2 - Self.Height / 2
             ZIndex: =2
 
-        Title4 As label:
-            Align: =Align.Center
-            BorderColor: =RGBA(0, 0, 0, 0)
-            Color: =If(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(255, 255, 255, 1), DateAdd(_firstDayInView, ThisItem.Value) = Today(), RGBA(47, 41, 43, 1), LblMonthSelected3.Color)
-            Fill: |-
-                =/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
-                If(
-                    /*Date selected is today*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),
-                    /*Today when it is not selected*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle3.Fill, 0.67), 
-                    /*The day is outside the range of the currently selected month*/
-                    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
-            FocusedBorderColor: =Self.Color
-            FocusedBorderThickness: =2
-            Height: =MonthDayGallery3.TemplateHeight
-            OnSelect: =Set(_dateSelected, DateAdd(_firstDayInView, ThisItem.Value, Days))
-            Size: =17 * MonthDayGallery3.TemplateWidth / 91
-            TabIndex: =0
-            Text: =Day(DateAdd(_firstDayInView,ThisItem.Value,Days))
-            VerticalAlign: =Middle
-            Visible: |-
-                =/*This item is in a row containing no days of the visible month. It is in the row after the row where the last day of the month occurs*/ 
-                 !(DateAdd(_firstDayInView,ThisItem.Value,Days) - Weekday(DateAdd(_firstDayInView,ThisItem.Value,Days)) + 1 > _lastDayOfMonth)
-            Width: =MonthDayGallery3.TemplateWidth
-            Wrap: =false
-            ZIndex: =3
-
     LblDateSelected3 As label:
         Height: =RectMeetingBkg3.Height
         Size: =13
@@ -248,16 +207,6 @@
         Y: =LblDateSelected3.Y + LblDateSelected3.Height
         ZIndex: =13
 
-        Rectangle1 As rectangle:
-            BorderThickness: =If(ThisItem.Id = _selectedCalendarEvent.Id, 2, 0)
-            Fill: =RGBA(0,0,0,0)
-            Height: =Parent.TemplateHeight
-            HoverFill: =RGBA(0,0,0,0)
-            OnSelect: =Select(Title5)
-            TabIndex: =0
-            Width: =Parent.TemplateWidth
-            ZIndex: =1
-
         iconLocation2 As icon.Waypoint:
             Height: =Subtitle1.Height
             Icon: =Icon.Waypoint
@@ -267,39 +216,6 @@
             X: =Title5.X
             Y: =Subtitle1.Y
             ZIndex: =2
-
-        Title5 As label:
-            BorderColor: =Self.Color
-            FocusedBorderThickness: =2
-            FontWeight: =FontWeight.Semibold
-            Height: =Self.Size * 1.8
-            OnSelect: =Set(_selectedCalendarEvent, ThisItem)
-            Size: =19 * CalendarEventsGallery2.TemplateHeight / 105
-            TabIndex: =0
-            Text: =ThisItem.Subject
-            Tooltip: =ThisItem.Subject
-            VerticalAlign: =Middle
-            Width: =CalendarEventsGallery2.TemplateWidth - Self.X - 10
-            Wrap: =false
-            X: =Body2.X + Body2.Width + 10
-            Y: =CalendarEventsGallery2.TemplateHeight / 4 - Self.Height / 2 + 5
-            ZIndex: =3
-
-        Subtitle1 As label:
-            FocusedBorderThickness: =2
-            FontWeight: =FontWeight.Lighter
-            Height: =Self.Size * 2
-            OnSelect: =Select(Title5)
-            PaddingBottom: =0
-            Size: =18 * CalendarEventsGallery2.TemplateHeight / 105
-            Text: =ThisItem.Location
-            Tooltip: =ThisItem.Location
-            VerticalAlign: =Middle
-            Width: =CalendarEventsGallery2.TemplateWidth - Self.X - 10
-            Wrap: =false
-            X: =iconLocation2.X + iconLocation2.Width + 10
-            Y: =3 / 4 * CalendarEventsGallery2.TemplateHeight - Self.Height / 2 - 5
-            ZIndex: =4
 
         Body2 As label:
             FocusedBorderThickness: =2
@@ -326,13 +242,6 @@
             X: =32
             Y: =Subtitle1.Y
             ZIndex: =6
-
-        Separator1 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =7
 
     iconEmptyState2 As icon.CalendarBlank:
         DisplayMode: =DisplayMode.View
