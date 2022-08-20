@@ -270,7 +270,9 @@
         ZIndex: =21
 
     TextInput2 As text:
+        BorderColor: =RGBA(255, 255, 255, 1)
         Default: =""
+        Fill: =RGBA(237, 241, 255, 1)
         Height: =56
         HintText: ="Title"
         Width: =730
@@ -279,13 +281,15 @@
         ZIndex: =22
 
     TextInput2_1 As text:
+        BorderColor: =RGBA(255, 255, 255, 1)
         Default: =""
-        Height: =122
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =139
         HintText: ="Message"
         Mode: =TextMode.MultiLine
         Width: =730
         X: =471
-        Y: =493
+        Y: =475
         ZIndex: =23
 
     Import1 As import:
