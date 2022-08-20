@@ -174,39 +174,10 @@
         Y: =WeekdayGallery1_1.Y + WeekdayGallery1_1.Height
         ZIndex: =11
 
-        Circle1_1 As circle:
-            Height: =Self.Width
-            OnSelect: =Select(Parent)
-            Visible: |-
-                =/*Visible if calendar events are found on this day*/               
-                CountRows(Filter(MyCalendarEvents, DateValue(Text(Start)) = DateAdd(_firstDayInView,ThisItem.Value,Days))) > 0 && !Subcircle1_1.Visible && Title2_1.Visible
-            Width: =6.5
-            X: =MonthDayGallery1_1.TemplateWidth / 2 - Self.Width / 2
-            Y: =MonthDayGallery1_1.TemplateHeight * (0.75)
-            ZIndex: =1
-
-        Subcircle1_1 As circle:
-            Height: =3 * Title2_1.Size
-            OnSelect: =Select(Parent)
-            Visible: =And(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, Title2_1.Visible)
-            Width: =Self.Height
-            X: =MonthDayGallery1_1.TemplateWidth/2 - Self.Width/2
-            Y: =MonthDayGallery1_1.TemplateHeight / 2 - Self.Height / 2
-            ZIndex: =2
-
         Title2_1 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 0, 0, 0)
-            Color: =If(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(255, 255, 255, 1), DateAdd(_firstDayInView, ThisItem.Value) = Today(), RGBA(47, 41, 43, 1), LblMonthSelected1_1.Color)
-            Fill: |-
-                =/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
-                If(
-                    /*Date selected is today*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),
-                    /*Today when it is not selected*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle1_1.Fill, 0.67), 
-                    /*The day is outside the range of the currently selected month*/
-                    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), And(DateDiff(_startDay, _firstDayOfMonth) + Self.Text > 0, DateDiff(_endDay, _firstDayOfMonth) + Self.Text < 2), RGBA(200, 200, 200, 1),RGBA(0, 0, 0, 0))
             FocusedBorderColor: =Self.Color
             FocusedBorderThickness: =2
             Height: =MonthDayGallery1_1.TemplateHeight
@@ -241,11 +212,13 @@
         ZIndex: =13
 
     DatePicker1 As datepicker:
+        OnSelect: =Set(_startDay, DatePicker1.SelectedDate)
         X: =471
         Y: =167
         ZIndex: =14
 
     DatePicker1_1 As datepicker:
+        OnSelect: =Set(_endDay, DatePicker1_1.SelectedDate)
         X: =846
         Y: =173
         ZIndex: =15
