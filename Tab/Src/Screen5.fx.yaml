@@ -361,13 +361,6 @@
         Y: =RectQuickActionBar3.Height
         ZIndex: =16
 
-    Button2 As button:
-        BorderColor: =RGBA(255,255,255,1)
-        Text: ="My Task"
-        X: =1145
-        Y: =18
-        ZIndex: =17
-
     Rectangle5 As rectangle:
         BorderColor: =RGBA(215, 223, 240, 1)
         Fill: =RGBA(215, 223, 240, 1)
