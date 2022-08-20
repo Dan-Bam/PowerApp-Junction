@@ -61,3 +61,23 @@
         Y: =106
         ZIndex: =6
 
+    Form1 As form:
+        DataSource: =Documents
+        X: =336
+        Y: =175
+        ZIndex: =7
+
+    Icon1 As icon.Attachment:
+        Height: =47
+        Icon: =Icon.PaperClip
+        Width: =36
+        X: =399
+        Y: =237
+        ZIndex: =8
+
+    Label13 As label:
+        Text: ="Attach file"
+        X: =435
+        Y: =240
+        ZIndex: =9
+
