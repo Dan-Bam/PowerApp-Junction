@@ -239,3 +239,12 @@
         Y: =RectQuickActionBar1.Height
         ZIndex: =13
 
+    Button6 As button:
+        OnSelect: |-
+            =Set(varUserCalendarId, LookUp(Office365Outlook.CalendarGetTablesV2().value, name="Calendar").id);
+            Navigate('my task')
+        Text: ="단추"
+        X: =701
+        Y: =446
+        ZIndex: =14
+

@@ -63,7 +63,8 @@
 
     "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
         Height: =443
-        Items: =Planner.GetPlanDetails(0)
+        Items: |-
+            =Office365Outlook.GetEventsCalendarView(varUserCalendarId, "1970-01-01T08:00:00-07:00", "2050-01-01T08:00:00-07:00")
         Layout: =Layout.Vertical
         TemplatePadding: =0
         TemplateSize: =Min(160, Self.Height - 60)
@@ -87,14 +88,10 @@
             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
             ZIndex: =4
 
-    DataTable1 As dataTable.datatable:
-        BorderStyle: =BorderStyle.Solid
-        DisplayMode: =DisplayMode.Edit
-        Fill: =RGBA(0, 0, 0, 0)
-        Height: =500
-        Items: =문서
-        Width: =800
-        X: =40
-        Y: =40
-        ZIndex: =7
+        Label8 As label:
+            OnSelect: =Select(Parent)
+            Text: =
+            X: =40
+            Y: =40
+            ZIndex: =5
 

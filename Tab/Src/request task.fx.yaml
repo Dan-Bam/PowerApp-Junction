@@ -226,7 +226,15 @@
         ZIndex: =15
 
     Button2 As button:
-        OnSelect: =
+        OnSelect: |-
+            =Office365Outlook.V4CalendarPostItem(
+                 varUserCalendarId, 
+                 TextInput2.Text, 
+                 _startDay, 
+                 _endDay, 
+                 "UTC"
+            );
+            Navigate('my task')
         Text: ="REQUEST"
         X: =1161
         Y: =709
