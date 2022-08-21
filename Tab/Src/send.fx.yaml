@@ -1,4 +1,4 @@
-"Screen1 As screen.'tabletLayout_Email_ver3.0'":
+"send As screen.'tabletLayout_Email_ver3.0'":
 
     RectQuickActionBar2 As rectangle:
         Height: =64

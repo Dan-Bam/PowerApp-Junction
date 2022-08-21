@@ -1,4 +1,4 @@
-"'my task' As screen.'tabletLayout_Calendar_ver3.0'":
+"task As screen.'tabletLayout_Calendar_ver3.0'":
 
     Button1 As button:
         BorderColor: =RGBA(215, 223, 240, 1)
@@ -7,7 +7,7 @@
         Fill: =RGBA(237, 241, 255, 1)
         FontWeight: =FontWeight.Normal
         Height: =105
-        OnSelect: =Navigate('request task')
+        OnSelect: =Navigate('own task')
         PressedBorderColor: =RGBA(136, 160, 209, 1)
         PressedColor: |
             =RGBA(237,241,255,1)
