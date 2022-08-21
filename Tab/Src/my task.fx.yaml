@@ -67,6 +67,35 @@
         Y: =668
         ZIndex: =7
 
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =407
+        Items: |-
+            =Office365Outlook.GetEventsCalendarViewV3(
+                varUserCalendarId,
+                _firstDayOfMonth,
+                Today()
+            ).value
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =1366
+        Y: =193
+        ZIndex: =7
+
+        Separator2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label9 As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.subject
+            X: =18
+            Y: =48
+            ZIndex: =6
+
     Icon1 As icon.Draw:
         Icon: =Icon.Home
         Width: =50
@@ -88,15 +117,6 @@
         X: =1147
         Y: =677
         ZIndex: =10
-
-    Label9 As label:
-        Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Size: =20
-        Text: ="Assign"
-        X: =121
-        Y: =721
-        ZIndex: =11
 
     Label9_1 As label:
         Align: =Align.Center
