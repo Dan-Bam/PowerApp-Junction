@@ -366,7 +366,7 @@
         FontWeight: =FontWeight.Bold
         OnSelect: =Navigate(mail)
         Size: =12
-        Text: ="Assign"
+        Text: ="Mail"
         X: =121
         Y: =725
         ZIndex: =34
