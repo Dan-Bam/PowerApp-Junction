@@ -114,19 +114,19 @@
         Y: =725
         ZIndex: =14
 
-    Container2 As groupContainer.verticalAutoLayoutContainer:
-        Height: =333
+    Container4 As groupContainer.verticalAutoLayoutContainer:
+        Height: =340
+        LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         LayoutOverflowX: =LayoutOverflow.Scroll
         LayoutOverflowY: =LayoutOverflow.Scroll
         Width: =1366
         Y: =162
-        ZIndex: =16
+        ZIndex: =15
 
-        Gallery3 As gallery.variableTemplateHeightGallery:
-            Fill: =RGBA(255, 255, 255, 1)
-            FillPortions: =10
+        Gallery4 As gallery.variableTemplateHeightGallery:
+            AlignInContainer: =AlignInContainer.SetByContainer
             Items: |-
                 =Office365Outlook.GetEventsCalendarViewV3(
                     varUserCalendarId,
@@ -139,7 +139,7 @@
             TemplateSize: =280
             ZIndex: =1
 
-            Label8 As label:
+            Label10 As label:
                 AutoHeight: =true
                 OnSelect: =Select(Parent)
                 Text: =ThisItem.subject
