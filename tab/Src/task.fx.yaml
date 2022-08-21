@@ -136,10 +136,3 @@
             TemplateSize: =280
             ZIndex: =1
 
-            Label2 As label:
-                OnSelect: =Select(Parent)
-                Text: =ThisItem.subject
-                X: =40
-                Y: =40
-                ZIndex: =1
-
