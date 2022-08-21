@@ -115,7 +115,7 @@
         ZIndex: =14
 
     Container4 As groupContainer.verticalAutoLayoutContainer:
-        Height: =146
+        Height: =340
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         LayoutOverflowY: =LayoutOverflow.Scroll
@@ -123,8 +123,7 @@
         Y: =162
         ZIndex: =15
 
-        Gallery4 As gallery.variableTemplateHeightGallery:
-            AlignInContainer: =AlignInContainer.SetByContainer
+        Gallery1 As gallery.variableTemplateHeightGallery:
             Items: |-
                 =Office365Outlook.GetEventsCalendarViewV3(
                     varUserCalendarId,
@@ -137,8 +136,7 @@
             TemplateSize: =280
             ZIndex: =1
 
-            Label10 As label:
-                AutoHeight: =true
+            Label2 As label:
                 OnSelect: =Select(Parent)
                 Text: =ThisItem.subject
                 X: =40
