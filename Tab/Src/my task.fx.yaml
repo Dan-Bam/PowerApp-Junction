@@ -4,7 +4,7 @@
         BorderColor: =RGBA(215, 223, 240, 1)
         Color: =RGBA(0, 0, 0, 1)
         DisabledFill: =RGBA(166, 166, 166, 1)
-        Fill: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(237, 241, 255, 1)
         FontWeight: =FontWeight.Normal
         Height: =105
         OnSelect: =Navigate('request task')
@@ -19,7 +19,7 @@
         Text: ="+ Assign Task"
         Width: =487
         X: =435
-        Y: =616
+        Y: =521
         ZIndex: =1
 
     RectQuickActionBar1_3 As rectangle:
@@ -60,4 +60,28 @@
         X: =21
         Y: =106
         ZIndex: =6
+
+    Icon1 As icon.Draw:
+        Icon: =Icon.Home
+        X: =885
+        Y: =415
+        ZIndex: =7
+
+    Icon1_1 As icon.Draw:
+        Icon: =Icon.Edit
+        X: =1161
+        Y: =457
+        ZIndex: =8
+
+    Icon1_2 As icon.Draw:
+        Icon: =Icon.ListWatchlistRemind
+        X: =1302
+        Y: =446
+        ZIndex: =9
+
+    Rectangle4 As rectangle:
+        Fill: =RGBA(237, 241, 255, 1)
+        Width: =1366
+        Y: =668
+        ZIndex: =10
 
