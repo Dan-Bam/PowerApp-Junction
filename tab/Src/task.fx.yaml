@@ -1,0 +1,148 @@
+"task As screen.'tabletLayout_Calendar_ver3.0'":
+
+    Button1 As button:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledFill: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(237, 241, 255, 1)
+        FontWeight: =FontWeight.Normal
+        Height: =105
+        OnSelect: =Navigate('own task')
+        PressedBorderColor: =RGBA(136, 160, 209, 1)
+        PressedColor: |
+            =RGBA(237,241,255,1)
+        RadiusBottomLeft: =30
+        RadiusBottomRight: =30
+        RadiusTopLeft: =30
+        RadiusTopRight: =30
+        Size: =30
+        Text: ="+ Assign Task"
+        Width: =487
+        X: =435
+        Y: =521
+        ZIndex: =1
+
+    RectQuickActionBar1_3 As rectangle:
+        Height: =90
+        Width: =Parent.Width
+        ZIndex: =2
+
+    Label3 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =57
+        Size: =30
+        Text: ="My Tiny Asistance"
+        Width: =350
+        X: =21
+        Y: =14
+        ZIndex: =3
+
+    Button5 As button:
+        BorderColor: =RGBA(255,255,255,1)
+        Text: |-
+            ="My Task
+            "
+        X: =1186
+        Y: =23
+        ZIndex: =4
+
+    Rectangle3 As rectangle:
+        BorderColor: =RGBA(215, 223, 240, 1)
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =72
+        OnSelect: =RGBA(237,241,255,1)
+        Width: =1366
+        Y: =90
+        ZIndex: =5
+
+    Label4 As label:
+        Text: ="   Assigned Task"
+        X: =21
+        Y: =106
+        ZIndex: =6
+
+    Rectangle4 As rectangle:
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =75
+        Width: =1366
+        Y: =693
+        ZIndex: =7
+
+    Icon1 As icon.Draw:
+        Icon: =Icon.Home
+        Width: =35
+        X: =658
+        Y: =686
+        ZIndex: =8
+
+    Icon1_1 As icon.Draw:
+        Height: =60
+        Icon: =Icon.Edit
+        Width: =35
+        X: =178
+        Y: =692
+        ZIndex: =9
+
+    Icon1_2 As icon.Draw:
+        Icon: =Icon.ListWatchlistRemind
+        Width: =35
+        X: =1154
+        Y: =686
+        ZIndex: =10
+
+    Label9_1 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Home"
+        X: =601
+        Y: =728
+        ZIndex: =12
+
+    Label9_2 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Task"
+        X: =1097
+        Y: =725
+        ZIndex: =13
+
+    Label9_3 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Assign"
+        X: =121
+        Y: =725
+        ZIndex: =14
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Height: =339
+        Items: |-
+            =Office365Outlook.GetEventsCalendarViewV3(
+                varUserCalendarId,
+                _firstDayOfMonth,
+                Today()
+            ).value
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =1366
+        Y: =162
+        ZIndex: =15
+
+        Separator3 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label2 As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.subject
+            X: =20
+            Y: =48
+            ZIndex: =6
+
