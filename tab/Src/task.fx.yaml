@@ -115,7 +115,7 @@
         ZIndex: =14
 
     Container4 As groupContainer.verticalAutoLayoutContainer:
-        Height: =238
+        Height: =107
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
         LayoutOverflowY: =LayoutOverflow.Scroll
