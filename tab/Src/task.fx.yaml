@@ -37,15 +37,6 @@
         Y: =14
         ZIndex: =3
 
-    Button5 As button:
-        BorderColor: =RGBA(255,255,255,1)
-        Text: |-
-            ="My Task
-            "
-        X: =1186
-        Y: =23
-        ZIndex: =4
-
     Rectangle3 As rectangle:
         BorderColor: =RGBA(215, 223, 240, 1)
         Fill: =RGBA(237, 241, 255, 1)
