@@ -125,7 +125,8 @@
         ZIndex: =16
 
         Gallery3 As gallery.variableTemplateHeightGallery:
-            Fill: =RGBA(153, 160, 196, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =10
             Items: |-
                 =Office365Outlook.GetEventsCalendarViewV3(
                     varUserCalendarId,
