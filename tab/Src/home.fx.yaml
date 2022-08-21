@@ -1,13 +1,5 @@
 "home As screen.'tabletLayout_Calendar_ver3.0'":
 
-    RectMeetingBkg1 As rectangle:
-        Height: =42
-        Visible: =_calendarVisible
-        Width: =Parent.Width - Self.X
-        X: =422
-        Y: =RectQuickActionBar1.Height
-        ZIndex: =1
-
     RectQuickActionBar1 As rectangle:
         Height: =64
         Width: =Parent.Width
@@ -221,17 +213,6 @@
             Wrap: =false
             ZIndex: =3
 
-    LblDateSelected1 As label:
-        Height: =RectMeetingBkg1.Height
-        Size: =13
-        Text: =Text(_dateSelected, DateTimeFormat.LongDate)
-        Visible: =_calendarVisible
-        Width: =Parent.Width / 3 - 60
-        Wrap: =false
-        X: =451
-        Y: =RectQuickActionBar1.Height
-        ZIndex: =12
-
     RectCalendarSeparator1 As rectangle:
         Height: =Parent.Height - Self.Y
         Width: =2
@@ -239,7 +220,32 @@
         Y: =RectQuickActionBar1.Height
         ZIndex: =13
 
-    Button6 As button:
+    Rectangle4_2 As rectangle:
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =75
+        Width: =1366
+        Y: =693
+        ZIndex: =15
+
+    Icon1_6 As icon.Draw:
+        Icon: =Icon.Home
+        OnSelect: =Navigate(home)
+        Width: =35
+        X: =658
+        Y: =686
+        ZIndex: =16
+
+    Icon1_7 As icon.Draw:
+        Height: =60
+        Icon: =Icon.Edit
+        OnSelect: =Navigate(mail)
+        Width: =35
+        X: =178
+        Y: =692
+        ZIndex: =17
+
+    Icon1_8 As icon.Draw:
+        Icon: =Icon.ListWatchlistRemind
         OnSelect: |-
             =Set(varUserCalendarId, LookUp(Office365Outlook.CalendarGetTablesV2().value, name="Calendar").id);
             /*retrieves calendar events for all days in current month view and selected calendar 
@@ -261,37 +267,6 @@
             UpdateContext({_showLoading: false});         
             Set(_calendarVisible, true);
             Navigate(task)
-        Text: ="단추"
-        X: =701
-        Y: =446
-        ZIndex: =14
-
-    Rectangle4_2 As rectangle:
-        Fill: =RGBA(237, 241, 255, 1)
-        Height: =75
-        Width: =1366
-        Y: =693
-        ZIndex: =15
-
-    Icon1_6 As icon.Draw:
-        Icon: =Icon.Home
-        OnSelect: =Navigate(home)
-        Width: =35
-        X: =658
-        Y: =686
-        ZIndex: =16
-
-    Icon1_7 As icon.Draw:
-        Height: =60
-        Icon: =Icon.Edit
-        Width: =35
-        X: =178
-        Y: =692
-        ZIndex: =17
-
-    Icon1_8 As icon.Draw:
-        Icon: =Icon.ListWatchlistRemind
-        OnSelect: =Navigate(task)
         Width: =35
         X: =1154
         Y: =686
@@ -310,7 +285,27 @@
     Label9_8 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
-        OnSelect: =Navigate(task)
+        OnSelect: |-
+            =Set(varUserCalendarId, LookUp(Office365Outlook.CalendarGetTablesV2().value, name="Calendar").id);
+            /*retrieves calendar events for all days in current month view and selected calendar 
+            _minDate and _maxDate act as markers to prevent duplicate data collection*/         
+            If(IsBlank(_userDomain),         
+            	UpdateContext({_showLoading: true});         
+            	Set(_userDomain, Right(User().Email, Len(User().Email) - Find("@", User().Email)));         
+            	Set(_dateSelected, Today());         
+            	Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), Days));         
+            	Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
+            	Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, Months), -1, Days))         
+            );         
+            Set(_calendarVisible, false);         
+            UpdateContext({_showLoading: true});         
+            Set(_myCalendar, dropdownCalendarSelection1.Selected);         
+            Set(_minDate, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days));         
+            Set(_maxDate, DateAdd(DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), Days), 40, Days));         
+            ClearCollect(MyCalendarEvents, Office365Outlook.GetEventsCalendarViewV2(_myCalendar.Name, Text(_minDate, UTC), Text(_maxDate, UTC)).value);         
+            UpdateContext({_showLoading: false});         
+            Set(_calendarVisible, true);
+            Navigate(task)
         Size: =12
         Text: ="Task"
         X: =1097
@@ -320,6 +315,7 @@
     Label9_9 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
+        OnSelect: =Navigate(mail)
         Size: =12
         Text: ="Assign"
         X: =121

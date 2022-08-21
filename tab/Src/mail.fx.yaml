@@ -1,4 +1,4 @@
-"Screen2 As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
+"mail As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
 
     RectQuickActionBar3 As rectangle:
         Height: =64

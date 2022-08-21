@@ -70,6 +70,7 @@
 
     Icon1 As icon.Draw:
         Icon: =Icon.Home
+        OnSelect: =Navigate(home)
         Width: =35
         X: =658
         Y: =686
@@ -78,6 +79,7 @@
     Icon1_1 As icon.Draw:
         Height: =60
         Icon: =Icon.Edit
+        OnSelect: =Navigate(mail)
         Width: =35
         X: =178
         Y: =692
@@ -85,6 +87,7 @@
 
     Icon1_2 As icon.Draw:
         Icon: =Icon.ListWatchlistRemind
+        OnSelect: =Navigate(task)
         Width: =35
         X: =1154
         Y: =686
@@ -93,6 +96,7 @@
     Label9_1 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
+        OnSelect: =Navigate(home)
         Size: =12
         Text: ="Home"
         X: =601
@@ -102,6 +106,7 @@
     Label9_2 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
+        OnSelect: =Navigate(task)
         Size: =12
         Text: ="Task"
         X: =1097
@@ -111,6 +116,7 @@
     Label9_3 As label:
         Align: =Align.Center
         FontWeight: =FontWeight.Bold
+        OnSelect: =Navigate(mail)
         Size: =12
         Text: ="Assign"
         X: =121
