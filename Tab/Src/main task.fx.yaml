@@ -266,3 +266,59 @@
         Y: =446
         ZIndex: =14
 
+    Rectangle4_2 As rectangle:
+        Fill: =RGBA(237, 241, 255, 1)
+        Height: =75
+        Width: =1366
+        Y: =693
+        ZIndex: =15
+
+    Icon1_6 As icon.Draw:
+        Icon: =Icon.Home
+        Width: =35
+        X: =658
+        Y: =686
+        ZIndex: =16
+
+    Icon1_7 As icon.Draw:
+        Height: =60
+        Icon: =Icon.Edit
+        Width: =35
+        X: =178
+        Y: =692
+        ZIndex: =17
+
+    Icon1_8 As icon.Draw:
+        Icon: =Icon.ListWatchlistRemind
+        Width: =35
+        X: =1154
+        Y: =686
+        ZIndex: =18
+
+    Label9_7 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Home"
+        X: =601
+        Y: =728
+        ZIndex: =19
+
+    Label9_8 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Task"
+        X: =1097
+        Y: =725
+        ZIndex: =20
+
+    Label9_9 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =12
+        Text: ="Assign"
+        X: =121
+        Y: =725
+        ZIndex: =21
+
