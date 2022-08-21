@@ -232,7 +232,7 @@
             Navigate(task)
         Text: ="REQUEST"
         X: =1174
-        Y: =613
+        Y: =602
         ZIndex: =16
 
     Button2_1 As button:
@@ -242,7 +242,7 @@
         OnSelect: =Navigate(task)
         Text: ="CANCLE"
         X: =994
-        Y: =613
+        Y: =602
         ZIndex: =17
 
     Label1 As label:
