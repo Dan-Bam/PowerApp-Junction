@@ -71,21 +71,22 @@
         Icon: =Icon.Home
         Width: =50
         X: =653
-        Y: =668
+        Y: =673
         ZIndex: =8
 
     Icon1_1 As icon.Draw:
+        Height: =60
         Icon: =Icon.Edit
         Width: =50
         X: =171
-        Y: =668
+        Y: =677
         ZIndex: =9
 
     Icon1_2 As icon.Draw:
         Icon: =Icon.ListWatchlistRemind
         Width: =50
         X: =1147
-        Y: =668
+        Y: =677
         ZIndex: =10
 
     Label9 As label:
@@ -94,6 +95,24 @@
         Size: =20
         Text: ="Assign"
         X: =121
-        Y: =728
+        Y: =721
         ZIndex: =11
+
+    Label9_1 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Home"
+        X: =603
+        Y: =721
+        ZIndex: =12
+
+    Label9_2 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Task"
+        X: =1097
+        Y: =725
+        ZIndex: =13
 
