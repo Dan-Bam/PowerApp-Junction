@@ -77,10 +77,10 @@
         Height: =50
         Size: =18
         Text: =Text(_firstDayOfMonth, "mmmm yyyy")
-        Visible: =_calendarVisible
         Width: =419
         Wrap: =false
-        Y: =dropdownCalendarSelection1.Y + dropdownCalendarSelection1.Height + 40
+        X: =465
+        Y: =168
         ZIndex: =7
 
     iconPrevMonth1 As icon.ChevronLeft:
@@ -99,9 +99,9 @@
         PaddingTop: =7
         TabIndex: =0
         Tooltip: ="이전 달 보기"
-        Visible: =_calendarVisible
         Width: =59
-        Y: =LblMonthSelected1.Y
+        X: =423
+        Y: =168
         ZIndex: =8
 
     iconNextMonth1 As icon.ChevronRight:
@@ -120,29 +120,27 @@
         PaddingTop: =7
         TabIndex: =0
         Tooltip: ="다음 달 보기"
-        Visible: =_calendarVisible
         Width: =59
-        X: =419 - Self.Width
-        Y: =LblMonthSelected1.Y
+        X: =865
+        Y: =168
         ZIndex: =9
 
     WeekdayGallery1 As gallery.WeekdayGallery:
         AccessibleLabel: ="요일"
-        Height: =45
+        Height: =55
         Items: =Calendar.WeekdaysShort()
         ShowScrollbar: =false
         TemplatePadding: =0
-        TemplateSize: =60
-        Visible: =_calendarVisible
-        Width: =420
-        Y: =LblMonthSelected1.Y + LblMonthSelected1.Height + 10
+        TemplateSize: =195
+        Width: =1366
+        Y: =218
         ZIndex: =10
 
         Title1 As label:
             Align: =Align.Center
             Height: =WeekdayGallery1.TemplateHeight
             OnSelect: =Select(Parent)
-            Size: =17 * WeekdayGallery1.TemplateWidth / 77
+            Size: =17 * WeekdayGallery1.TemplateWidth / 150
             Text: =ThisItem.Value
             VerticalAlign: =Middle
             Width: =WeekdayGallery1.TemplateWidth
@@ -159,45 +157,15 @@
         ShowScrollbar: =false
         TemplatePadding: =0
         TemplateSize: =60
-        Visible: =_calendarVisible
-        Width: =420
+        Width: =1366
         WrapCount: =7
         Y: =WeekdayGallery1.Y + WeekdayGallery1.Height
         ZIndex: =11
 
-        Circle1 As circle:
-            Height: =Self.Width
-            OnSelect: =Select(Parent)
-            Visible: |-
-                =/*Visible if calendar events are found on this day*/               
-                CountRows(Filter(MyCalendarEvents, DateValue(Text(Start)) = DateAdd(_firstDayInView,ThisItem.Value,Days))) > 0 && !Subcircle1.Visible && Title2.Visible
-            Width: =6.5
-            X: =MonthDayGallery1.TemplateWidth / 2 - Self.Width / 2
-            Y: =MonthDayGallery1.TemplateHeight * (0.75)
-            ZIndex: =1
-
-        Subcircle1 As circle:
-            Height: =3 * Title2.Size
-            OnSelect: =Select(Parent)
-            Visible: =And(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, Title2.Visible)
-            Width: =Self.Height
-            X: =MonthDayGallery1.TemplateWidth/2 - Self.Width/2
-            Y: =MonthDayGallery1.TemplateHeight / 2 - Self.Height / 2
-            ZIndex: =2
-
         Title2 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 0, 0, 0)
-            Color: =If(DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(255, 255, 255, 1), DateAdd(_firstDayInView, ThisItem.Value) = Today(), RGBA(47, 41, 43, 1), LblMonthSelected1.Color)
-            Fill: |-
-                =/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
-                If(
-                    /*Date selected is today*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _dateSelected, RGBA(0,0,0,0),
-                    /*Today when it is not selected*/
-                    DateAdd(_firstDayInView, ThisItem.Value) = Today(), ColorFade(Subcircle1.Fill, 0.67), 
-                    /*The day is outside the range of the currently selected month*/
-                    Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
             FocusedBorderColor: =Self.Color
             FocusedBorderThickness: =2
             Height: =MonthDayGallery1.TemplateHeight
@@ -212,13 +180,6 @@
             Width: =MonthDayGallery1.TemplateWidth
             Wrap: =false
             ZIndex: =3
-
-    RectCalendarSeparator1 As rectangle:
-        Height: =Parent.Height - Self.Y
-        Width: =2
-        X: =420
-        Y: =RectQuickActionBar1.Height
-        ZIndex: =13
 
     Rectangle4_2 As rectangle:
         Fill: =RGBA(237, 241, 255, 1)
