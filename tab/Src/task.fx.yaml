@@ -114,34 +114,34 @@
         Y: =725
         ZIndex: =14
 
-    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
-        Fill: =RGBA(251, 188, 159, 1)
-        Height: =334
-        Items: |-
-            =Office365Outlook.GetEventsCalendarViewV3(
-                varUserCalendarId,
-                _firstDayOfMonth,
-                Today()
-            ).value
-        Layout: =Layout.Vertical
-        OnSelect: =true
-        TemplatePadding: =0
-        TemplateSize: =Min(160, Self.Height - 60)
+    Container2 As groupContainer.verticalAutoLayoutContainer:
+        Height: =333
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowX: =LayoutOverflow.Scroll
         Width: =1366
         Y: =162
-        ZIndex: =15
+        ZIndex: =16
 
-        Separator3 As rectangle:
-            Height: =1
-            OnSelect: =Select(Parent)
-            Width: =Parent.TemplateWidth
-            Y: =Parent.TemplateHeight - 1
-            ZIndex: =5
+        Gallery3 As gallery.variableTemplateHeightGallery:
+            Fill: =RGBA(153, 160, 196, 1)
+            Items: |-
+                =Office365Outlook.GetEventsCalendarViewV3(
+                    varUserCalendarId,
+                    _firstDayOfMonth,
+                    Today()
+                ).value
+            Layout: =Layout.Vertical
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            TemplateSize: =280
+            ZIndex: =1
 
-        Label2 As label:
-            OnSelect: =Select(Parent)
-            Text: =ThisItem.subject
-            X: =20
-            Y: =48
-            ZIndex: =6
+            Label8 As label:
+                AutoHeight: =true
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.subject
+                X: =40
+                Y: =40
+                ZIndex: =1
 
