@@ -30,7 +30,24 @@
             OnSelect: =Select(Parent)
             Text: =ThisItem.To
             Width: =336
-            X: =627
+            X: =997
             Y: =77
             ZIndex: =8
+
+        Label8 As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.To
+            Width: =302
+            X: =616
+            Y: =85
+            ZIndex: =9
+
+        Icon4 As icon.ArrowRight:
+            Height: =30
+            Icon: =Icon.ArrowRight
+            OnSelect: =Select(Parent)
+            Width: =35
+            X: =940
+            Y: =90
+            ZIndex: =10
 

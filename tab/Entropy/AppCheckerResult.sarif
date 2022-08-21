@@ -1874,19 +1874,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "task.Container4.Gallery4.AccessibleLabel"
+                  "fullyQualifiedName": "task.Container4.Gallery1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "task.Container4.Gallery4.AccessibleLabel",
+                  "fullyQualifiedName": "task.Container4.Gallery1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "task",
-                "type": "task.Container4.Gallery4"
+                "type": "task.Container4.Gallery1"
               }
             }
           ],
@@ -1904,19 +1904,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "task.Container4.Gallery4.TabIndex"
+                  "fullyQualifiedName": "task.Container4.Gallery1.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "task.Container4.Gallery4.TabIndex",
+                  "fullyQualifiedName": "task.Container4.Gallery1.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "task",
-                "type": "task.Container4.Gallery4"
+                "type": "task.Container4.Gallery1"
               }
             }
           ],

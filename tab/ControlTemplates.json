@@ -27,20 +27,6 @@
     "OverridableProperties": {},
     "Version": "2.2.0"
   },
-  "circle": {
-    "CustomGroupControlTemplateName": "",
-    "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/shapes/circle",
-    "IsComponentTemplate": false,
-    "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": false,
-    "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": true,
-    "LastModifiedTimestamp": "0",
-    "Name": "circle",
-    "OverridableProperties": {},
-    "Version": "2.3.0"
-  },
   "datepicker": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -124,20 +110,6 @@
     "Name": "icon",
     "OverridableProperties": {},
     "Version": "2.5.0"
-  },
-  "image": {
-    "CustomGroupControlTemplateName": "",
-    "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/image",
-    "IsComponentTemplate": false,
-    "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": false,
-    "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": true,
-    "LastModifiedTimestamp": "0",
-    "Name": "image",
-    "OverridableProperties": {},
-    "Version": "2.2.1"
   },
   "label": {
     "CustomGroupControlTemplateName": "",
