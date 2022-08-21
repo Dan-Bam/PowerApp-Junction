@@ -124,6 +124,7 @@
                 Today()
             ).value
         Layout: =Layout.Vertical
+        OnSelect: =true
         TemplatePadding: =0
         TemplateSize: =Min(160, Self.Height - 60)
         Width: =1366
