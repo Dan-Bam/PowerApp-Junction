@@ -114,22 +114,3 @@
         Y: =725
         ZIndex: =14
 
-    Gallery1 As gallery.variableTemplateHeightGallery:
-        Height: =320
-        Items: |-
-            =Office365Outlook.GetEventsCalendarViewV3(
-                varUserCalendarId, Text(_minDate, UTC), Text(_maxDate, UTC)).value 
-        Layout: =Layout.Vertical
-        TemplateSize: =94
-        Width: =1357
-        X: =9
-        Y: =120
-        ZIndex: =15
-
-        Label2 As label:
-            OnSelect: =Navigate('own task')
-            Text: =ThisItem.subject
-            X: =40
-            Y: =40
-            ZIndex: =1
-

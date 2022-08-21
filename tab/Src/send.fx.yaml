@@ -33,7 +33,8 @@
         PaddingRight: =14
         PaddingTop: =14
         Tooltip: ="메시지 보내기"
-        X: =Parent.Width - Self.Width
+        Width: =82
+        X: =1284
         ZIndex: =3
 
     LblRecipientCount1 As label:
@@ -254,4 +255,15 @@
             Width: =Parent.TemplateWidth
             Y: =Parent.TemplateHeight - 1
             ZIndex: =4
+
+    Button2_2 As button:
+        BorderColor: =ColorFade(Self.Color, -15%)
+        Color: =RGBA(255, 0, 0, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =64
+        OnSelect: =Navigate(mail)
+        Text: ="CANCLE"
+        Width: =108
+        X: =1176
+        ZIndex: =14
 
