@@ -1,2 +1,36 @@
 "mail As screen.'tabletLayout_HeaderAndGallery_ver3.0'":
 
+    "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Items: =Office365Outlook.GetEmails()
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        Width: =1366
+        Y: =193
+        ZIndex: =1
+
+        Separator2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label6 As label:
+            Height: =59
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Subject
+            Width: =566
+            X: =75
+            Y: =74
+            ZIndex: =6
+
+        Label9 As label:
+            Height: =56
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.To
+            Width: =336
+            X: =627
+            Y: =77
+            ZIndex: =8
+
