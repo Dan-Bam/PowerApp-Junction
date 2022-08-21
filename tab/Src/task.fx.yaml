@@ -114,32 +114,22 @@
         Y: =725
         ZIndex: =14
 
-    Container4 As groupContainer.verticalAutoLayoutContainer:
-        Height: =340
-        LayoutDirection: =LayoutDirection.Vertical
-        LayoutMode: =LayoutMode.Auto
-        LayoutOverflowY: =LayoutOverflow.Scroll
-        Width: =1366
-        Y: =162
+    Gallery1 As gallery.variableTemplateHeightGallery:
+        Height: =320
+        Items: |-
+            =Office365Outlook.GetEventsCalendarViewV3(
+                varUserCalendarId, Text(_minDate, UTC), Text(_maxDate, UTC)).value 
+        Layout: =Layout.Vertical
+        TemplateSize: =94
+        Width: =1357
+        X: =9
+        Y: =120
         ZIndex: =15
 
-        Gallery1 As gallery.variableTemplateHeightGallery:
-            Items: |-
-                =Office365Outlook.GetEventsCalendarViewV3(
-                    varUserCalendarId,
-                    _firstDayOfMonth,
-                    Today()
-                ).value
-            Layout: =Layout.Vertical
-            LayoutMinHeight: =287
-            LayoutMinWidth: =320
-            TemplateSize: =280
+        Label2 As label:
+            OnSelect: =Navigate('own task')
+            Text: =ThisItem.subject
+            X: =40
+            Y: =40
             ZIndex: =1
-
-            Label2 As label:
-                OnSelect: =Select(Parent)
-                Text: =ThisItem.subject
-                X: =40
-                Y: =40
-                ZIndex: =1
 
