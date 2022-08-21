@@ -52,7 +52,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateAddIcon.ID%",
       "Name": "AddIcon1",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -543,7 +543,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%SelectedUsersGallery.ID%",
       "Name": "EmailPeopleGallery1",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -823,7 +823,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateIconMail.ID%",
       "Name": "iconMail1",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1230,7 +1230,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateLblAppName.ID%",
       "Name": "LblAppName2",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1444,7 +1444,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateLblEmailMessage.ID%",
       "Name": "LblEmailMessage1",
-      "ParentIndex": 12,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1658,7 +1658,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateLblEmailSubject.ID%",
       "Name": "LblEmailSubject1",
-      "ParentIndex": 10,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1872,7 +1872,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateLblRecipientCount.ID%",
       "Name": "LblRecipientCount1",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2083,7 +2083,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%BrowseContainer.ID%",
       "Name": "PeopleBrowseGallery1",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2498,7 +2498,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateRectQuickActionBar.ID%",
       "Name": "RectQuickActionBar2",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2619,7 +2619,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateSearchIcon.ID%",
       "Name": "SearchIcon1",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3305,7 +3305,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTextEmailMessage.ID%",
       "Name": "TextEmailMessage1",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3624,7 +3624,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTextEmailSubject.ID%",
       "Name": "TextEmailSubject1",
-      "ParentIndex": 11,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3939,7 +3939,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "%TemplateTextSearchBox.ID%",
       "Name": "TextSearchBox1",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

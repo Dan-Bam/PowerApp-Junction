@@ -33,7 +33,7 @@
         Size: =25
         Text: ="My Tiny secret secretary"
         Width: =401
-        X: =21
+        X: =61
         Y: =3
         ZIndex: =3
 
@@ -113,26 +113,4 @@
         X: =121
         Y: =725
         ZIndex: =14
-
-    Container4 As groupContainer.verticalAutoLayoutContainer:
-        Height: =340
-        LayoutDirection: =LayoutDirection.Vertical
-        LayoutMode: =LayoutMode.Auto
-        LayoutOverflowY: =LayoutOverflow.Scroll
-        Width: =1366
-        Y: =162
-        ZIndex: =15
-
-        Gallery1 As gallery.variableTemplateHeightGallery:
-            Items: |-
-                =Office365Outlook.GetEventsCalendarViewV3(
-                    varUserCalendarId,
-                    _firstDayOfMonth,
-                    Today()
-                ).value
-            Layout: =Layout.Vertical
-            LayoutMinHeight: =287
-            LayoutMinWidth: =320
-            TemplateSize: =280
-            ZIndex: =1
 
