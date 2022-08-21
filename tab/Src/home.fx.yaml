@@ -160,7 +160,7 @@
         Title2 As label:
             Align: =Align.Center
             BorderColor: =RGBA(0, 0, 0, 0)
-            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+            Fill: =If(Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), And((_firstDayOfMonth + Self.Text) in MyCalendarEvents.start, DateDiff(_endDay, _firstDayOfMonth) + Self.Text < 2), RGBA(200, 200, 200, 1),RGBA(0, 0, 0, 0))
             FocusedBorderColor: =Self.Color
             FocusedBorderThickness: =2
             Height: =MonthDayGallery1.TemplateHeight
