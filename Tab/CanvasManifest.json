@@ -103,11 +103,11 @@
     "UserLocale": "ko-KR"
   },
   "ScreenOrder": [
-    "main task",
-    "request task",
+    "home",
+    "own task",
     "Properties",
-    "my task",
-    "Screen1",
-    "Login"
+    "task",
+    "send",
+    "Screen2"
   ]
 }
